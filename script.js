@@ -38,6 +38,16 @@ function LoadProject()
 
     document.getElementById('project-banner-name').innerHTML += `<h1>` + projectObject.fullName + `</h1>`;
 
+    var textElement = document.getElementById('project-body-text');
+    console.log(projectObject.videoLink);
+    if (projectObject.videoLink != "")
+    {
+        textElement.innerHTML += `<iframe class="project-video" src="`+ projectObject.videoLink + `" 
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>`;
+    }
+
+    textElement.innerHTML += projectObject.content;
+
     /*
     var folder = "images/";
 
