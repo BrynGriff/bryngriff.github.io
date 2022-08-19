@@ -1,0 +1,413 @@
+body{
+	background-color: #f3eee9;
+	padding: 0px;
+	margin: 0px;
+	font-family: trebuchet ms, sans-serif;
+	color: #f3eee9;
+}
+
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+* {
+	margin: 0;
+  	padding: 0;
+}
+
+#title-card, #info-card{
+	height: 55%;
+	position: absolute;
+}
+
+#info-card, .project-button, .project-button-background, #project-body, #info-card{
+	background-color:  #1c1c1c;
+}
+
+#contact
+{
+	background-color: #171717;
+}
+
+#title-card{
+	width: 66%;
+	background:url("images/title-card.png") rgba(16, 0, 0, 0.4);
+	background-size:cover;
+	background-blend-mode: multiply;
+	text-align: center;
+	line-height: 10px;
+	white-space: nowrap;
+}
+
+#title-card:before{
+	  content: '';
+	  display: inline-block;
+	  height: 100%;
+	  vertical-align: middle;
+}
+
+#name-card{
+  	font-size: 20px;
+  	display: inline-block;
+  	text-align: left;
+  	vertical-align: middle;
+  	margin-right:  20%;
+  	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#name-card h1, #project-banner-name h1{
+	font-size: max(5vmax, 80px);
+	font-family: 'Bebas Neue', cursive;
+}
+
+#project-banner-name h1
+{
+		font-size: max(5vw, 60px);
+}
+
+#name-card h1{
+	margin-bottom: 0.5em;
+}
+
+#name-card h2{
+	font-size: max(2vmax, 32px);
+}
+
+#info-card{
+	top:  0;
+	right:  0;
+	left:  65%;
+	overflow-y: auto;
+	font-size: 2vh;
+}
+
+#info-card, #project-body
+{
+	font-family: verdana, sans-serif;
+}
+
+#info-card img{
+	width: 40%;
+	aspect-ratio: 4/3;
+	object-fit: cover;
+	padding-top: 7.5%;
+}
+
+#info-card p{
+	padding-bottom: 10%;
+}
+
+#info-card p, #info-card img{
+	padding-left: 7.5%;
+	padding-right: 7.5%;
+}
+
+#contact{
+	position:  fixed;
+	width: 100%;
+	height: 40px;
+	bottom: 0;
+	z-index: 5;
+}
+
+#contact p{
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	margin: 0px;
+}
+
+.grey-text{
+	color: #8f8f8f;
+}
+
+#project-list{
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	column-gap: 10px;
+    row-gap: 10px;
+	top: 52%;
+	padding-bottom: 50px;
+	margin: 0;
+	width: 100%;
+}
+
+.project-button{
+	top: 0;
+	aspect-ratio: 4/3;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 0px;
+    position: relative;
+	min-width: 250px;
+	max-width: 18vw;
+	white-space: nowrap;
+	transition: transform 0.2s ease-out;
+	width: 100%;
+
+}
+
+.project-button:hover{
+	transform: translateY(-20px);
+}
+
+@media (max-width: 1325px)
+{
+	.project-button
+	{
+		max-width: 25vw;
+		flex-basis: 30%;
+	}
+}
+
+
+.project-button-text{
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	word-break: break-all;
+	position: relative;
+	left: 0;
+	right: 0;
+
+}
+
+.project-button-background{
+	aspect-ratio: 4/3;
+	width: 100%;
+	display: inline-block;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.project-button-overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	z-index: 1;
+	background-color: white;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0;
+	transition: opacity 0.2s ease-out;
+}
+
+.project-button-overlay:hover{
+	opacity: 0.15;
+}
+
+.project-button h1, .project-button h2{
+	margin: 0px;
+}
+
+.project-button h1{
+	font-size: 30px;
+
+}
+
+.project-button h2{
+	font-size: 20px;
+}
+
+#project-body{
+	height: auto;
+	min-height: 80%;
+	width: 60%;
+	margin: 0 auto;
+	min-width: calc(min(800px, 100%));
+	overflow: hidden;
+}
+
+#project-body-text{
+	padding: 40px;
+	width: 60%;
+	padding-bottom: 75px;
+	padding-top: 30px;
+	padding-right: 0px;
+		box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#project-body-images{
+	padding: 20px;
+	width: 40%;
+	margin: 0;
+	padding: 0;
+	float: right;
+	padding: 30px 4% 30px 4%;
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#project-body-images img{
+	aspect-ratio: 4/3;
+	width: 100%;
+	object-fit: cover;
+	margin-bottom: 15px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.project-video{
+	max-width: 100%;
+	width: 500px;
+	margin: auto;
+	aspect-ratio: 16/9;
+	padding-bottom: 20px;
+}
+
+#project-banner{
+	background:url("images/title-card.png") rgba(16, 0, 0, 0.4);
+  	background-size:cover;
+  	background-blend-mode: multiply;
+  	text-align: center;
+  	line-height: 10px;
+  	white-space: nowrap;
+  	display: block;
+  	aspect-ratio: 5/1;
+  	width: 100%;
+
+  	margin: 0 auto;
+
+}
+
+#project-banner:before{
+	  content: '';
+	  display: inline-block;
+	  height: 100%;
+	  vertical-align: middle;
+}
+
+#project-banner-name{
+  	font-size: 20px;
+  	display: inline-block;
+  	text-align: left;
+  	vertical-align: middle;
+  	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media(max-width: 1000px)
+{
+	#project-body-images
+	{
+		float: initial;
+		width: 100%;
+		overflow-x: scroll;
+		padding: 0;
+		white-space: nowrap;
+		margin-top: 20px;
+	}
+
+	#project-body-images img{
+		width: 40%;
+		margin-right: -6px;
+		box-shadow: initial;
+		margin-bottom: 0px;
+	}
+
+	#project-body{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	#project-body-text{
+		width: 100%;
+		margin: 0;
+		padding-left: 30px;
+		padding-right: 30px;
+		box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	}
+
+	.project-video{
+		width: min(85%, 600px);
+		display: block;
+  	margin-right: auto;
+  	margin-left: auto;
+	}
+}
+
+@media (max-aspect-ratio: 5/4) or (min-aspect-ratio: 20/5) or (max-height: 500px){
+
+  #title-card{
+  	width: 100%;
+  	max-height: 40%;
+  	height: 100%;
+  	min-height: 200px;
+  	position: relative;
+  }
+
+  #name-card h1{
+	font-size: min(14vw, 100px);
+}
+
+#name-card h2{
+	font-size: min(6vw, 40px);
+}
+
+  #info-card{
+  	width: 100%;
+  	right: auto;
+  	left: auto;
+  	position: relative;
+  	overflow-y: hidden;
+  	height: auto;
+	font-size: min(max(15px, 2vw), 20px);
+	font-family: verdana, sans-serif;
+  }
+
+  #info-card img{
+  	max-height: 150px;
+  	max-width: 40%;
+  	width: auto;
+  	float: right;
+  	padding-top: 2em;
+  	padding-bottom: 2em;
+  }
+
+  #info-card p{
+  	padding-top: 2em;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-top: 0px;
+  	padding-bottom: 3em;
+}
+
+  .project-button{
+  	min-width: 200px;
+  	max-width: 75%;
+  	flex-grow: 1;
+  }
+
+  .project-button h1{
+	font-size: 25px;
+
+}
+
+.project-button h2{
+	font-size: 14px;
+}
+
+  	#project-list{
+		width: 90%;
+		margin: 0 auto;
+		left: initial;
+		right: initial;
+		top: -2em;
+		position: relative;
+	}
+
+	#name-card{
+		margin-right: initial;
+	}
+}
