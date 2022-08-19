@@ -85,6 +85,7 @@ html, body{
 #info-card, #project-body
 {
 	font-family: verdana, sans-serif;
+	line-height: 25px;
 }
 
 #info-card img{
