@@ -36,6 +36,8 @@ function LoadProject()
 
     var projectObject = json[parseInt(queryString)];
 
+    document.title = projectObject.fullName + " - Bryn Griffiths";
+
     document.getElementById('project-banner-name').innerHTML += `<h1>` + projectObject.fullName + `</h1>`;
 
     document.getElementById('project-banner').setAttribute("style", `background:url('images/banners/` + projectObject.name + `.png') rgba(16, 0, 0, 0.2);`)

@@ -244,6 +244,10 @@ a:link, a:visited, a:hover, a:active {
     -moz-box-sizing: border-box;
 }
 
+#project-body-text h1{
+	line-height: 40px;
+}
+
 #project-body-images{
 	padding: 20px;
 	width: 40%;
@@ -432,6 +436,7 @@ a:link, a:visited, a:hover, a:active {
 	font-size:   	clamp(15px, 2vw, 20px);
 	line-height:  clamp(15px, 2vw, 20px);
 	font-family: verdana, sans-serif;
+	padding-bottom: 50px;
   }
 
   #info-card img{
@@ -440,7 +445,7 @@ a:link, a:visited, a:hover, a:active {
   	width: auto;
   	float: right;
   	padding-top: 30px;
-  	padding-bottom: 60px;
+	  padding-bottom: 10px;
   }
 
   #info-card p{
@@ -448,7 +453,7 @@ a:link, a:visited, a:hover, a:active {
 	padding-left: 5%;
 	padding-right: 5%;
 	margin-top: 0px;
-  	padding-bottom: 60px;
+	padding-bottom: 10px;
 }
 
   .project-button{
@@ -478,16 +483,4 @@ a:link, a:visited, a:hover, a:active {
 		margin-right: initial;
 		padding-top: 20px;
 	}
-}
-
-@media(max-width: 525px)
-{
-	  #info-card img{
-  	max-height: 150px;
-  	max-width: 40%;
-  	width: auto;
-  	float: right;
-  	padding-top: 2em;
-  	padding-bottom: 10px;
-  }
 }
