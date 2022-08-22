@@ -265,8 +265,9 @@ a:link, a:visited, a:hover, a:active {
 
 #back-button, #download-button{
 	background-color: #292929;
+	border-radius: 5px;
 	z-index: 6;
-	width: 130px;
+	width: 140px;
 	height: 100%;
 	text-align: center;
 	padding-top: 7px;
@@ -276,12 +277,24 @@ a:link, a:visited, a:hover, a:active {
     -moz-box-sizing: border-box;
     		transition: background-color 0.1s ease-out;
     		float: left;
+    		margin-right: 10px;
+}
+
+#navbuttons
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	margin-left: 40px;
 }
 
 #download-button
 {
-	float: right;
-	width: 160px;
+	width: 140px;
+}
+
+#back-button
+{
 }
 
 #download-button:hover{
@@ -385,10 +398,8 @@ a:link, a:visited, a:hover, a:active {
 		visibility: hidden;
 	}
 
-	#download-button
-	{
-		float: right;
-		width: 130px;
+	#navbuttons{
+		margin-left: 10px;
 	}
 }
 
