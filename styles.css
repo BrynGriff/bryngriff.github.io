@@ -86,12 +86,12 @@ a:link, a:visited, a:hover, a:active {
 	left:  65%;
 	overflow-y: auto;
 	font-size: 2vh;
+	line-height: 2.25vh;
 }
 
 #info-card, #project-body
 {
 	font-family: verdana, sans-serif;
-	line-height: 25px;
 }
 
 #info-card img{
@@ -230,6 +230,7 @@ a:link, a:visited, a:hover, a:active {
 	margin: 0 auto;
 	min-width: calc(min(800px, 100%));
 	overflow: hidden;
+	line-height: 25px;
 }
 
 #project-body-text{
@@ -265,7 +266,7 @@ a:link, a:visited, a:hover, a:active {
 #back-button, #download-button{
 	background-color: #292929;
 	z-index: 6;
-	width: 120px;
+	width: 130px;
 	height: 100%;
 	text-align: center;
 	padding-top: 7px;
@@ -280,7 +281,7 @@ a:link, a:visited, a:hover, a:active {
 #download-button
 {
 	float: right;
-	width: 200px;
+	width: 160px;
 }
 
 #download-button:hover{
@@ -365,18 +366,29 @@ a:link, a:visited, a:hover, a:active {
 	#project-body-text{
 		width: 100%;
 		margin: 0;
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: 5%;
+		padding-right: 5%;
 		box-sizing: border-box;
 	    -webkit-box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 	}
 
 	.project-video{
-		width: min(85%, 600px);
+		width: min(90%, 40rem);
+		max-width: 40rem;
 		display: block;
   	margin-right: auto;
   	margin-left: auto;
+	}
+
+	.hide-on-mobile{
+		visibility: hidden;
+	}
+
+	#download-button
+	{
+		float: right;
+		width: 130px;
 	}
 }
 
@@ -384,7 +396,7 @@ a:link, a:visited, a:hover, a:active {
 
   #title-card{
   	width: 100%;
-  	max-height: 40%;
+  	max-height: 30%;
   	height: 100%;
   	min-height: 200px;
   	position: relative;
@@ -405,7 +417,9 @@ a:link, a:visited, a:hover, a:active {
   	position: relative;
   	overflow-y: hidden;
   	height: auto;
-	font-size: min(max(15px, 2vw), 20px);
+
+	font-size:   	clamp(15px, 2vw, 20px);
+	line-height:  clamp(15px, 2vw, 20px);
 	font-family: verdana, sans-serif;
   }
 
@@ -414,16 +428,16 @@ a:link, a:visited, a:hover, a:active {
   	max-width: 40%;
   	width: auto;
   	float: right;
-  	padding-top: 2em;
-  	padding-bottom: 2em;
+  	padding-top: 30px;
+  	padding-bottom: 60px;
   }
 
   #info-card p{
-  	padding-top: 2em;
+  	padding-top: 30px;
 	padding-left: 5%;
 	padding-right: 5%;
 	margin-top: 0px;
-  	padding-bottom: 3em;
+  	padding-bottom: 60px;
 }
 
   .project-button{
@@ -442,15 +456,27 @@ a:link, a:visited, a:hover, a:active {
 }
 
   	#project-list{
-		width: 90%;
 		margin: 0 auto;
 		left: initial;
 		right: initial;
-		top: -2em;
+		top: -40px;
 		position: relative;
 	}
 
 	#name-card{
 		margin-right: initial;
+		padding-top: 20px;
 	}
+}
+
+@media(max-width: 525px)
+{
+	  #info-card img{
+  	max-height: 150px;
+  	max-width: 40%;
+  	width: auto;
+  	float: right;
+  	padding-top: 2em;
+  	padding-bottom: 10px;
+  }
 }

@@ -38,6 +38,8 @@ function LoadProject()
 
     document.getElementById('project-banner-name').innerHTML += `<h1>` + projectObject.fullName + `</h1>`;
 
+    document.getElementById('project-banner').setAttribute("style", `background:url('images/banners/` + projectObject.name + `.png') rgba(16, 0, 0, 0.2);`)
+
     document.getElementById('download-link').setAttribute("href", projectObject.downloadLink);
 
     var textElement = document.getElementById('project-body-text');
@@ -47,6 +49,13 @@ function LoadProject()
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>`;
     }
     textElement.innerHTML += projectObject.content;
+
+    var imagesElement = document.getElementById('project-body-images');
+
+    for (let i = 1; i <= 4; i++)
+    {
+        imagesElement.innerHTML += `<img src="images/previews/`+ projectObject.name+ `/`+ i + `.png">`;
+    }
 
     /*
     var folder = "images/";
