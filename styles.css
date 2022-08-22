@@ -99,10 +99,11 @@ a:link, a:visited, a:hover, a:active {
 	aspect-ratio: 4/3;
 	object-fit: cover;
 	padding-top: 7.5%;
+	padding-bottom: 3%;
 }
 
 #info-card p{
-	padding-bottom: 10%;
+	padding-bottom: 10px;
 }
 
 #info-card p, #info-card img{
