@@ -229,7 +229,7 @@ a:link, a:visited, a:hover, a:active {
 	min-height: 80%;
 	width: 60%;
 	margin: 0 auto;
-	min-width: calc(min(800px, 100%));
+	min-width: calc(min(1000px, 100%));
 	overflow: hidden;
 	line-height: 25px;
 }
@@ -423,7 +423,7 @@ a:link, a:visited, a:hover, a:active {
 	}
 }
 
-@media (max-aspect-ratio: 5/4) or (min-aspect-ratio: 20/5) or (max-height: 500px){
+@media (max-aspect-ratio: 5/4) or (min-aspect-ratio: 20/5) or (max-height: 500px) or (max-width: 800px){
 
   #title-card{
   	width: 100%;

@@ -17,7 +17,7 @@ function LoadHome()
                     <h1>` + json[i].displayName + `</h1>
                     <h2>`+ json[i].engine + ` - `+ json[i].year + `</h2>
                 </div>
-                <a href="project.html?` + i + `">
+                <a href="project.html?` + json[i].name + `">
                     <div class="project-button-overlay"></div>
                 </a>
               </div>
@@ -29,12 +29,23 @@ function LoadProject()
 {
     var queryString = window.location.search;
     queryString = queryString.substring(1);
+
+    var projectObject;
     if (queryString == "")
     {
         queryString = "0";
     }
 
-    var projectObject = json[parseInt(queryString)];
+    if (isNaN(queryString))
+    {
+        projectObject = json.find(element => element.name == queryString)
+    }
+    else
+    {
+        projectObject = json[parseInt(queryString)];
+    }
+
+
 
     document.title = projectObject.fullName + " - Bryn Griffiths";
 
@@ -45,7 +56,7 @@ function LoadProject()
     document.getElementById('download-link').setAttribute("href", projectObject.downloadLink);
 
     var textElement = document.getElementById('project-body-text');
-    if (projectObject.videoLink != "")
+    if ('videoLink' in projectObject && projectObject.videoLink != "")
     {
         textElement.innerHTML += `<iframe class="project-video" src="`+ projectObject.videoLink + `" 
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>`;
