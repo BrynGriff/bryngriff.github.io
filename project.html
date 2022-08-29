@@ -19,9 +19,10 @@
   </head>
 
   <body id="body" onLoad="LoadProject();">
-
+    <div id="project-background"></div>
     <div id = "project-body">
-      <div id="project-banner" style="background:url('images/title-card.png') rgba(16, 0, 0, 0.2);">
+
+      <div id="project-banner">
         <div id="project-banner-name">
 
         </div>
@@ -46,6 +47,8 @@
         The main focus of Forgotten Constructs is the cooperative multiplayer, where one player takes control of a melee focused sword-wielder and the second player takes control of an archer. The game features a Metroidvania style progression, where the players progress and collect items that allow them to access earlier areas after backtracking. The players encounter enemies inside locked rooms and must defeat them before progressing. As they progress players will find items to help them reach new areas, such as a grappling hook that lets them reach a key to open the boss door.<br><br>
         <h1>Combat System</h1>
         The games' combat system was created using the first iteration of my state machine system that would eventually be used in Persist. This allows certain actions to overlap and some queue, as well as making certain actions sequential with specific transition timings, such as combo attack of the melee knight. Overall I felt the combat mechanics could have been refined further, and given more time to work on it I would first rework the enemy staggering system to prevent stunlocking enemies.<br><br>
+        <h1>Movement System</h1>
+        The game features two kinds of grappling points that the player can use to traverse the map - green points pull players towards them and yellow points can be swung across. These were inspired by the grappling points in the Ratchet and Clank trilogy but executed in a sidescroller perspective. These points work by disabling the players' character controllers and changing their movement to physics based by setting their rigidbodies to dynamic while they are grappling. <br><br>
 
         <!--<iframe class="project-video" src="https://www.youtube.com/embed/C45PUbWLfM8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
                 
@@ -63,7 +66,6 @@
     <div id="contact">
       <p><span class="grey-text">E-Mail</span> tnzgriff@gmail.com <span class="hide-on-mobile" style="float: right;">Website by Bryn Griffiths</span></p>
     </div>
-
   </body>
 
 </html>

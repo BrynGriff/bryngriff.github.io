@@ -51,9 +51,11 @@ function LoadProject()
 
     document.getElementById('project-banner-name').innerHTML += `<h1>` + projectObject.fullName + `</h1>`;
 
-    document.getElementById('project-banner').setAttribute("style", `background: url('images/banners/` + projectObject.name + `.png') rgba(16, 0, 0, 0.2);`)
+    document.getElementById('project-banner').setAttribute("style", `background-image: url('images/banners/` + projectObject.name + `.png');`)
 
     document.getElementById('download-link').setAttribute("href", projectObject.downloadLink);
+
+    document.getElementById('project-background').setAttribute("style", `background-image: url('images/banners/` + projectObject.name + `.png');`);
 
     var textElement = document.getElementById('project-body-text');
     if ('videoLink' in projectObject && projectObject.videoLink != "")
