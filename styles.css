@@ -247,6 +247,15 @@ a:link, a:visited, a:hover, a:active {
 	min-width: calc(min(1000px, 100%));
 	overflow: hidden;
 	line-height: 25px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.between-line{
+	display: block;
+	height: 4px;
+	background-color: #131313;
+	margin-bottom: 1em;
+	margin-top: 1.25em;
 }
 
 #project-body-text{
@@ -342,7 +351,6 @@ a:link, a:visited, a:hover, a:active {
 	width: 500px;
 	margin: auto;
 	aspect-ratio: 16/9;
-	padding-bottom: 20px;
 }
 
 #project-banner{
@@ -390,6 +398,7 @@ a:link, a:visited, a:hover, a:active {
 		height: 300px;
 		max-height: 30vh;
 		overflow-y: hidden;
+		min-height: 225px;
 	}
 
 	#project-body-images img{

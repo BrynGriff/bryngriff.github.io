@@ -61,7 +61,7 @@ function LoadProject()
     if ('videoLink' in projectObject && projectObject.videoLink != "")
     {
         textElement.innerHTML += `<iframe class="project-video" src="`+ projectObject.videoLink + `" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>`;
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><div class='between-line'></div>`;
     }
     textElement.innerHTML += projectObject.content;
 
