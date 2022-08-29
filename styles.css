@@ -69,7 +69,7 @@ a:link, a:visited, a:hover, a:active {
 
 #project-banner-name h1
 {
-		font-size: max(5vw, 60px);
+		font-size: 80px;
 }
 
 #project-background{
@@ -388,6 +388,7 @@ a:link, a:visited, a:hover, a:active {
 		white-space: nowrap;
 		margin-top: 20px;
 		height: 300px;
+		max-height: 30vh;
 		overflow-y: hidden;
 	}
 
@@ -430,12 +431,19 @@ a:link, a:visited, a:hover, a:active {
 
 	#navbuttons{
 		margin-left: 10px;
+			display: flex;
+	justify-content: center;
 	}
 
 
 	#download-bar
 	{
 		height: 20px;
+	}
+
+	#project-banner-name h1
+	{
+		font-size: 10vw;
 	}
 }
 
