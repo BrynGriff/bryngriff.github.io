@@ -44,7 +44,17 @@
         
     </div>
   </div>
+      <div class="loader-wrapper">
+        <img src="images/loadingman.gif">
+    </div>
 
+
+    <script>
+        $(window).on("load",function(){
+          console.log("YEEE");
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
 
     <div id="contact">
       <p><span class="grey-text">E-Mail</span> tnzgriff@gmail.com <span class="hide-on-mobile" style="float: right;">Website by Bryn Griffiths</span></p>
