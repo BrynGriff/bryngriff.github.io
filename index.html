@@ -45,8 +45,9 @@
     </div>
 
 
-    <script>
-        $('selector').waitForImages(function() {
+        <script>
+        window.addEventListener('load', (event) => {
+          console.log("YEEE");
           $(".loader-wrapper").fadeOut("slow");
         });
     </script>
