@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="waitforimages.min.js"></script>
     <script src="projects.js"></script>
     <script src="script.js"></script>
 
@@ -19,7 +18,7 @@
     <base href="">
   </head>
 
-  <body id="body" onLoad="LoadProject();">
+  <body id="body">
     <div id="project-background"></div>
     <div id = "project-body">
 
@@ -49,12 +48,11 @@
         <img src="images/loadingman.gif">
     </div>
 
-
         <script>
-        window.addEventListener('load', (event) => {
-          console.log("YEEE");
-          $(".loader-wrapper").fadeOut("slow");
-        });
+      window.addEventListener('load', (event) => {
+        $(".loader-wrapper").fadeOut("slow");
+      });
+      LoadProject();
     </script>
 
     <div id="contact">
