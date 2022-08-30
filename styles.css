@@ -1,5 +1,5 @@
 body{
-	background-color: #3a3b3c;
+	background-color: #2d3238;
 	padding: 0px;
 	margin: 0px;
 	font-family: trebuchet ms, sans-serif;
@@ -28,7 +28,7 @@ a:link, a:visited, a:hover, a:active {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #3a3b3c;
+  background-color: #2d3238;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +119,7 @@ a:link, a:visited, a:hover, a:active {
 	left:  65%;
 	overflow-y: auto;
 	font-size: 2vh;
-	line-height: 2.25vh;
+	line-height: 2.5vh;
 }
 
 #info-card, #project-body
@@ -181,7 +181,7 @@ a:link, a:visited, a:hover, a:active {
 .project-button{
 	top: 0;
 	aspect-ratio: 4/3;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     padding: 0px;
     position: relative;
 	min-width: 275px;
