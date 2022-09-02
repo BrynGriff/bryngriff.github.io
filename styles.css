@@ -51,7 +51,7 @@ body, .loader-wrapper{
 	background-color:  #1c1c1c;
 }
 
-#contact, #download-bar, #download-button
+#contact, #download-bar, #download-button, .miniproject-download-button
 {
 	background-color: #171717;
 }
@@ -288,7 +288,7 @@ body, .loader-wrapper{
 	margin-top: 1.25em;
 }
 
-#project-body-text{
+#project-body-text, #project-body-miniprojects{
 	padding: 40px;
 	width: 60%;
 	padding-bottom: 75px;
@@ -298,7 +298,27 @@ body, .loader-wrapper{
     -moz-box-sizing: border-box;
 }
 
-#project-body-text h1{
+#project-body-miniprojects{
+	width: 100%;
+	padding-right: 40px;
+}
+
+.miniproject{
+	width: 100%;
+}
+
+.miniproject img{
+	float: right;
+	width: 30%;
+	min-width: 200px;
+	margin-left: 20px;
+	margin-top: 10px;
+	aspect-ratio: 4/3;
+	z-index: 40;
+	object-fit: cover;
+}
+
+#project-body-text h1, #project-body-miniprojects h1{
 	line-height: 40px;
 }
 
@@ -325,7 +345,7 @@ body, .loader-wrapper{
 	z-index: 5;
 }
 
-#back-button, #download-button{
+#back-button, #download-button, .miniproject-download-button{
 	background-color: #141414;
 	border-radius: 5px;
 	z-index: 6;
@@ -342,6 +362,12 @@ body, .loader-wrapper{
     		margin-right: 10px;
 }
 
+.miniproject-download-button{
+		height: 40px;
+		float: right;
+		margin-top: 5px;
+}
+
 #navbuttons
 {
 	margin: 0;
@@ -355,16 +381,7 @@ body, .loader-wrapper{
   transform: translateY(-50%);
 }
 
-#download-button
-{
-	width: 140px;
-}
-
-#back-button
-{
-}
-
-#download-button:hover, #back-button:hover{
+#download-button:hover, #back-button:hover, .miniproject-download-button:hover{
 	background-color: #333333;
 }
 
@@ -373,7 +390,15 @@ body, .loader-wrapper{
 	width: 100%;
 	object-fit: cover;
 	margin-bottom: 15px;
-	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+#project-body-images img, .miniproject img{
+		box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.miniproject h2
+{
+	font-size: 18px;
 }
 
 .project-video{

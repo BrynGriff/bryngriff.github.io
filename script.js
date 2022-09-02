@@ -88,3 +88,39 @@ function LoadProject()
     });
     */
 }
+
+function LoadMiniProjects()
+{
+    var miniProjectJson = JSON.parse(miniProjectData);
+    var miniProjectsElement = document.getElementById('project-body-miniprojects');
+
+    for (let i = 0; i < miniProjectJson.length; i++)
+    {
+        if (i != 0)
+        {
+            miniProjectsElement.innerHTML += `<div class='between-line'></div>`
+        }
+        var downloadButton = ``;
+        if (miniProjectJson[i].downloadLink != "")
+        {
+            downloadButton = `
+            <a id="download-link" href="` + miniProjectJson[i].downloadLink + `" target="_blank">
+              <div class="miniproject-download-button">Download</div>
+          </a>`
+        }
+
+        miniProjectsElement.innerHTML += downloadButton + `
+          <div class="miniproject">
+          <div class="miniproject-title">
+            <h1>` + miniProjectJson[i].fullname + `</h1>
+            <h2>` + miniProjectJson[i].engine + `</h2>
+          </div>
+          <br>
+          <img src="images/previews/miniprojects/` + miniProjectJson[i].name + `.` + miniProjectJson[i].imageExtension + `">
+          <div class="miniproject-text">
+            ` + miniProjectJson[i].description + `
+          </div>` + `` + `</div>
+                    <br clear="both" />`
+          ;
+    }
+}

@@ -46,3 +46,51 @@ var projectData = `[
     "content": "<h1>Overview</h1>Starbent is a 2D bullet hell game inspired by Space Invaders created in Game Maker Studio 2. I was the sole developer of this project, as such I created all the code and assets for the game, save for the sounds and 2 sprites. This was the first game project I worked on at Media Design School and was created in 2 months.<div class='between-line'></div><h1>Content</h1>In Starbent you fight waves of flying enemies which move in a space-invaders-like pattern. The player ship is able to move in a 2D space in the lower portion of the screen to dodge the assailment of bullets and bombs from the enemies while firing back. The player ship can activate a shield to block bullets for a short time which charges the ships' ultimate laser, capable of wiping out several columns of invaders. Between each wave of invaders, a boss will appear and fight the player with unique attacks and gimmicks. During the invader waves the player can shoot a UFO flying at the top to gain a temporary powerup. The game is endless, progressively getting harder until the player is destroyed.<div class='between-line'></div><h1>Idea Expansion</h1>For this project I was tasked with creating a Space Invaders game in Game Maker Studio 2. This idea of Space Invaders didn't initially appeal to me at first, so I thought of several ways to make the gameplay more unique and engaging. The first idea was allowing the player to move in a limited 2D space, followed by the shield and ultimate laser, followed by creating the first boss prototype. More ideas came from there to further refine and enhance the gameplay to a point where it doesn't just feel like a space invaders clone, despite looking like one on a surface level glance.<div class='between-line'></div><h1>Future Plans</h1>I considered taking this game into full production as a personal project at one point, though it would not have been possible with the workload I had from Media Design School. At this stage if I were to continue working on this game it would have to be rebuilt from the ground up to shake out some of the hacky inexperienced code choices. The game would have lost most of its Space Invader elements and become a more traditional bullet hell game, keeping the same artstyle. The main ship would have become one of several, with each ship featuring different abilities. More enemies, bosses and environments would have been added, as well as a complete story."
   }
 ]`
+
+var miniProjectData = `[
+  {
+    "name": "quantumhalt",
+    "fullname": "Quantum Halt",
+    "engine": "Unreal Engine 4",
+    "imageExtension": "gif",
+    "downloadLink": "",
+    "description": "Quantum Halt is a time-based puzzle prototype made in Unreal Engine 4. I was sole developer of this project, and the intent of it was to familiarize myself with Unreal Engine 4 and blueprints. The game consisted of several puzzle rooms where the player must move boxes and freeze time to complete puzzles. Once all of the coins have been collected into a room the player may continue. The files for this project were unfortunately lost so there is no download available."
+
+  },
+  {
+    "name": "killerround",
+    "fullname": "Killer Round",
+    "engine": "Unreal Engine 4",
+    "imageExtension": "gif",
+    "downloadLink": "https://drive.google.com/file/d/1OSVwrKkWiEELVDh5PsOJzude6RT1jUF6/view?usp=sharing",
+    "description": "Killer Round is a high-speed arena shooter. The player travels at high speed around a changing arena surrounding a massive pillar, shooting robots with different weapons to get a high score. I was one of 2 programmers working on this project. I worked on the movement systems, created the level changing system, menus, UI, gun mechanics and gun pickups. Unfortunately the game's core loop never got fleshed out to the extent we wanted it to in the short time we had. There's no incentive to go fast, rather it's more beneficial to play it slow and kill all the enemies from a distance. Still, the mechanics I did get to work on were good practice for Unreal."
+
+  },
+  {
+  "name": "meatman",
+  "fullname": "Meat Man",
+  "engine": "C++, SFML",
+  "imageExtension": "png",
+  "downloadLink": "https://drive.google.com/file/d/1yZJWHSog1cVKCwc35p_5zGzg_6H4F4EW/view?usp=sharing",
+  "description": "Meat Man is a 2D platformer created with C++ and rendered with the SFML library. I was the sole developer of this project. This project was made to test my C++ skills creating bounding box physics, platformer systems and AI without any underlying engine. This project also allowed me to test a rudimentary level generation system and scene swapping system in C++. Levels are created through text files, with X representing tiles and O representing empty squares. There are also letters for the player spawn, enemies, gravity flippers and checkpoints. The player's main tool is the ability to shoot enemies, break blocks and flip gravity switches, causing the player to go upside down. The game features 3 levels and a bonus mode where the player is timed by a deadly wall following behind them."
+
+  },
+  {
+  "name": "clothsim",
+  "fullname": "Cloth Simulation",
+  "engine": "C++, OpenGL",
+  "imageExtension": "gif",
+  "downloadLink": "https://drive.google.com/file/d/1W65ygEgoNukzQk1tckLa-2mPGxg3bfDi/view?usp=sharing",
+  "description": "This is a simple cloth simulation created with C++ and rendered with OpenGL. This was made as another learning experience in C++ and a test in creating physics without external libraries. The curtain is made up of a set of nodes and joints and the physics of the cloth is calculated using Verlet integration. The curtain can be dragged around with the left mouse button and ripped if put under enough stress. The curtain can also be removed from the rail entirely. Right clicking allows the cloth to be directly torn. The cloth is affected by wind and torn pieces will blow away."
+
+  },
+  {
+  "name": "dronerepairkit",
+  "fullname": "Drone Repair Kit",
+  "engine": "Unity Engine - Modding",
+  "imageExtension": "gif",
+  "downloadLink": "https://thunderstore.io/package/Griff/Drone_Repair_Kit/",
+  "description": "Drone Repair Kit is a mod for Risk of Rain 2. This project was the first mod I have created for a game, made to add to the community and test how I can increase mod support in my own projects. The mod adds an equipment item that replicates the functionality of the Drone Repair Kit item from Risk of Rain 1. When used it repairs all friendly drones and purchases broken drones for free. As of now the mod has received over 20,000 downloads."
+
+  }
+]`
