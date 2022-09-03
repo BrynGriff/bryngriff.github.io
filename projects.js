@@ -54,7 +54,7 @@ var miniProjectData = `[
     "engine": "Unreal Engine 4",
     "imageExtension": "gif",
     "downloadLink": "",
-    "description": "Quantum Halt is a time-based puzzle prototype made in Unreal Engine 4. I was sole developer of this project, and the intent of it was to familiarize myself with Unreal Engine 4 and blueprints. The game consisted of several puzzle rooms where the player must move boxes and freeze time to complete puzzles. Once all of the coins have been collected into a room the player may continue. The files for this project were unfortunately lost so there is no download available."
+    "description": "Quantum Halt is a time-based puzzle prototype made in Unreal Engine 4. I was the sole developer of this project, and the intent of it was to familiarise myself with Unreal Engine 4 and blueprints. The game consists of several puzzle rooms where the player must move boxes and freeze time to complete puzzles. Once all of the coins have been collected in a room, the player may continue. The files for this project were unfortunately lost, so there is no download available."
 
   },
   {
@@ -62,8 +62,8 @@ var miniProjectData = `[
     "fullname": "Killer Round",
     "engine": "Unreal Engine 4",
     "imageExtension": "gif",
-    "downloadLink": "https://drive.google.com/file/d/1OSVwrKkWiEELVDh5PsOJzude6RT1jUF6/view?usp=sharing",
-    "description": "Killer Round is a high-speed arena shooter. The player travels at high speed around a changing arena surrounding a massive pillar, shooting robots with different weapons to get a high score. I was one of 2 programmers working on this project. I worked on the movement systems, created the level changing system, menus, UI, gun mechanics and gun pickups. Unfortunately the game's core loop never got fleshed out to the extent we wanted it to in the short time we had. There's no incentive to go fast, rather it's more beneficial to play it slow and kill all the enemies from a distance. Still, the mechanics I did get to work on were good practice for Unreal."
+    "downloadLink": "https://drive.google.com/file/d/16kzQs83QrHUJA_MvIY6F1qndKw_HIjlx/view?usp=sharing",
+    "description": "Killer Round is a high-speed arena shooter. The player travels at high speed around a changing arena surrounding a massive pillar, shooting robots with different weapons to get a high score. I was one of two programmers working on this project. I worked on the movement systems, created the level changing system, menus, UI, gun mechanics, and gun pickups. Unfortunately, the game's core loop never got fleshed out to the extent we wanted it to in the short time we had. There's no incentive to go fast, so it's more beneficial to play it slow and kill all the enemies from a distance. Still, the mechanics I did get to work on were good practise for Unreal."
 
   },
   {
@@ -72,7 +72,16 @@ var miniProjectData = `[
     "engine": "Unity Engine - Modding",
     "imageExtension": "gif",
     "downloadLink": "https://thunderstore.io/package/Griff/Drone_Repair_Kit/",
-    "description": "Drone Repair Kit is a mod for Risk of Rain 2. This project was the first mod I have created for a game, made to add to the community and test how I can increase mod support in my own projects. The mod adds an equipment item that replicates the functionality of the Drone Repair Kit item from Risk of Rain 1. When used it repairs all friendly drones and purchases broken drones for free. As of now the mod has received over 20,000 downloads."
+    "description": "Drone Repair Kit is a mod for Risk of Rain 2. This project was the first mod I have created for a game, made to add to the community and test how I can increase mod support in my own projects. The mod adds an equipment item that replicates the functionality of the Drone Repair Kit item from Risk of Rain 1. When used it repairs all friendly drones and purchases broken drones for free. As of now, the mod has received over 20,000 downloads."
+
+  },
+    {
+    "name": "mages",
+    "fullname": "Mages of the Abyss",
+    "engine": "Unity Engine",
+    "imageExtension": "gif",
+    "downloadLink": "https://drive.google.com/file/d/1QLpYheXkHTGJJPVc51rQHjA3DUzKBIfS/view?usp=sharing",
+    "description": "Mages of the Abyss is an online PVP arena shooter. Players can pick between two classes of mage: arcane and blood mage, and fight in a small arena. I was one of two programmers working on this game, alongside five artists. This was my first project working with the Unity networking plugin Mirror, and the experience gained from creating this prototype paved the way to making Persist a fully networked multiplayer game. The game is lacking in content (classes, maps) but was built to be expandable if we had decided to move it into full production."
 
   },
   {
@@ -81,7 +90,7 @@ var miniProjectData = `[
   "engine": "C++, SFML",
   "imageExtension": "png",
   "downloadLink": "https://drive.google.com/file/d/1yZJWHSog1cVKCwc35p_5zGzg_6H4F4EW/view?usp=sharing",
-  "description": "Meat Man is a 2D platformer created with C++ and rendered with the SFML library. I was the sole developer of this project. This project was made to test my C++ skills creating bounding box physics, platformer systems and AI without any underlying engine. This project also allowed me to test a rudimentary level generation system and scene swapping system in C++. Levels are created through text files, with X representing tiles and O representing empty squares. There are also letters for the player spawn, enemies, gravity flippers and checkpoints. The player's main tool is the ability to shoot enemies, break blocks and flip gravity switches, causing the player to go upside down. The game features 3 levels and a bonus mode where the player is timed by a deadly wall following behind them."
+  "description": "Meat Man is a 2D platformer created with C++ and rendered with the SFML library. I was the sole developer of this project. This project was made to test my C++ skills, creating bounding box physics, platformer systems, and AI without any underlying engine. This project also allowed me to test a rudimentary level generation system and scene swapping system in C++. Levels are created through text files, with X representing tiles and O representing empty squares. There are also letters for the player spawn, enemies, gravity flippers, and checkpoints. The player's main tool is the ability to shoot enemies, break blocks, and flip gravity switches, causing the player to go upside down. The game features 3 levels and a bonus mode where the player is timed by a deadly wall following behind them."
 
   },
   {
@@ -99,7 +108,16 @@ var miniProjectData = `[
   "engine": "Unity Engine - Mobile",
   "imageExtension": "png",
   "downloadLink": "https://play.google.com/store/apps/details?id=com.GriffLwlyn.StickyBall",
-  "description": "Sticky Ball is a physics-based platformer made in Unity Engine for Android on the Google Play Store. I was the sole developer of this project. The game was created to experiment with external API's such as the Google Play API as well as mobile controls in Unity. The player drags behind the ball to control the trajectory and power, and releases to let the ball fly. The ball will stick to any surface but will break on red surfaces. The goal is to get to the end of the level with the fewest jumps."
+  "description": "Sticky Ball is a physics-based platformer made in the Unity Engine for Android on the Google Play Store. I was the sole developer of this project. The game was created to experiment with external API's such as the Google Play API as well as mobile controls in Unity. The player drags behind the ball to control the trajectory and power, then releases to let the ball fly. The ball will stick to any surface but will break on red surfaces. The goal is to get to the end of the level with the fewest jumps."
+
+  },
+    {
+  "name": "pathfinding",
+  "fullname": "Pathfinding & Node Searching",
+  "engine": "C++, SFML",
+  "imageExtension": "gif",
+  "downloadLink": "https://drive.google.com/file/d/1FU-mX-9N9tCQqIneqlNe9qYU9jabJwOa/view?usp=sharing",
+  "description": "This program demonstrates the A* pathfinding algorithm in C++. There is also another algorithm that searches through node trees. This was made to experiment with several different algorithms in C++ and basic tile-based map creation. The A* algorithm features an editor to create a map with a start and a finish, and the algorithm will attempt to reach the end through the shortest distance."
 
   },
   {
@@ -107,8 +125,8 @@ var miniProjectData = `[
   "fullname": "Genetic Algorithm",
   "engine": "C++, SFML",
   "imageExtension": "gif",
-  "downloadLink": "https://drive.google.com/file/d/1yZJWHSog1cVKCwc35p_5zGzg_6H4F4EW/view?usp=sharing",
-  "description": "This is a basic genetic algorithm programmed in C++ and rendered in SFML. This was made as a machine-learning and generational structure test. This algorithm simulates the pink dot's survival in this forest, determined by its' ability to value different resources and the distance it takes to reach them. There are 3 resources in the map - food, wood and water. Food and wood both function identically in that they replenish when there are few on the map, but the survivor needs more food than wood each day to survive. Water is needed the most but there are only 3 nodes on the map at any given time and they change locations each day. The survivor requires enough food, water and wood to survive each day, and can only spend a certain amount of energy moving between nodes before having to go home. The survivor can mutate its priority for each resource node separately and how much it values closer nodes. The best 2 survivors in each generation will create the next generation with various mutations. Leaving the simulation running, the best mutated survivors in the later generations can survive for thousands of days."
+  "downloadLink": "https://drive.google.com/file/d/13pSwEJ1xnU3YuOjLrli5K6dmIpSDz0UF/view?usp=sharing",
+  "description": "This is a basic genetic algorithm programmed in C++ and rendered in SFML. This was made as a machine-learning and generational structure test. This algorithm simulates the pink dot's survival in this forest, determined by its ability to value different resources and the distance it takes to reach them. There are 3 resources on the map: food, wood, and water. Food and wood both function identically in that they replenish when there are few on the map, but the survivor needs more food than wood each day to survive. Water is needed the most, but there are only 3 nodes on the map at any given time, and they change locations each day. The survivor requires enough food, water, and wood to survive each day and can only spend a certain amount of energy moving between nodes before having to go home. The survivor can mutate its priority for each resource node separately and how much it values closer nodes. The best 2 survivors in each generation will create the next generation with various mutations. Leaving the simulation running, the best mutated survivors in the later generations can survive for thousands of days."
 
   }
 ]`
