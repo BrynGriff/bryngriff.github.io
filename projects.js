@@ -61,7 +61,7 @@ var miniProjectData = `[
     "name": "killerround",
     "fullname": "Killer Round",
     "engine": "Unreal Engine 4",
-    "imageExtension": "png",
+    "imageExtension": "gif",
     "downloadLink": "https://drive.google.com/file/d/1OSVwrKkWiEELVDh5PsOJzude6RT1jUF6/view?usp=sharing",
     "description": "Killer Round is a high-speed arena shooter. The player travels at high speed around a changing arena surrounding a massive pillar, shooting robots with different weapons to get a high score. I was one of 2 programmers working on this project. I worked on the movement systems, created the level changing system, menus, UI, gun mechanics and gun pickups. Unfortunately the game's core loop never got fleshed out to the extent we wanted it to in the short time we had. There's no incentive to go fast, rather it's more beneficial to play it slow and kill all the enemies from a distance. Still, the mechanics I did get to work on were good practice for Unreal."
 
