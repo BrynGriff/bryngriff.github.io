@@ -9,20 +9,32 @@ function LoadHome()
 
     for(let i = 0; i < json.length; i++)
     {
-        projectList.innerHTML += 
-        `
+        if (i == 3)
+        {
+            projectList.innerHTML += GenerateProjectButton('images/thumbnails/miniprojects.png', 'Mini Projects', 'Unreal, C++, etc', 'miniprojects.html');
+        }
+        var thumbnail = `images/thumbnails/` + json[i].name + `.png`;
+        var displayName = json[i].displayName;
+        var subtext = json[i].engine + ` - `+ json[i].year;
+        var link = `project.html?` + json[i].name;
+        projectList.innerHTML += GenerateProjectButton(thumbnail, displayName, subtext, link);
+    }
+}
+
+function GenerateProjectButton(thumbnail, displayName, subtext, link)
+{
+    return `
               <div class="project-button">
-                <div class="project-button-background" style="background-image: url('images/thumbnails/` + json[i].name + `.png');"></div>
+                <div class="project-button-background" style="background-image: url('`+ thumbnail + `');"></div>
                 <div class="project-button-text">
-                    <h1>` + json[i].displayName + `</h1>
-                    <h2>`+ json[i].engine + ` - `+ json[i].year + `</h2>
+                    <h1>` + displayName + `</h1>
+                    <h2>`+ subtext +`</h2>
                 </div>
-                <a href="project.html?` + json[i].name + `">
+                <a href="` + link + `">
                     <div class="project-button-overlay"></div>
                 </a>
               </div>
-        `
-    }
+        `;
 }
 
 function LoadProject()

@@ -61,7 +61,7 @@ var miniProjectData = `[
     "name": "killerround",
     "fullname": "Killer Round",
     "engine": "Unreal Engine 4",
-    "imageExtension": "gif",
+    "imageExtension": "png",
     "downloadLink": "https://drive.google.com/file/d/1OSVwrKkWiEELVDh5PsOJzude6RT1jUF6/view?usp=sharing",
     "description": "Killer Round is a high-speed arena shooter. The player travels at high speed around a changing arena surrounding a massive pillar, shooting robots with different weapons to get a high score. I was one of 2 programmers working on this project. I worked on the movement systems, created the level changing system, menus, UI, gun mechanics and gun pickups. Unfortunately the game's core loop never got fleshed out to the extent we wanted it to in the short time we had. There's no incentive to go fast, rather it's more beneficial to play it slow and kill all the enemies from a distance. Still, the mechanics I did get to work on were good practice for Unreal."
 
@@ -82,6 +82,15 @@ var miniProjectData = `[
   "imageExtension": "gif",
   "downloadLink": "https://drive.google.com/file/d/1W65ygEgoNukzQk1tckLa-2mPGxg3bfDi/view?usp=sharing",
   "description": "This is a simple cloth simulation created with C++ and rendered with OpenGL. This was made as another learning experience in C++ and a test in creating physics without external libraries. The curtain is made up of a set of nodes and joints and the physics of the cloth is calculated using Verlet integration. The curtain can be dragged around with the left mouse button and ripped if put under enough stress. The curtain can also be removed from the rail entirely. Right clicking allows the cloth to be directly torn. The cloth is affected by wind and torn pieces will blow away."
+
+  },
+  {
+  "name": "stickyball",
+  "fullname": "Sticky Ball",
+  "engine": "Unity Engine - Mobile",
+  "imageExtension": "png",
+  "downloadLink": "https://play.google.com/store/apps/details?id=com.GriffLwlyn.StickyBall",
+  "description": "Sticky Ball is a physics-based platformer made in Unity Engine for Android on the Google Play Store. I was the sole developer of this project. The game was created to experiment with external API's such as the Google Play API as well as mobile controls in Unity. The player drags behind the ball to control the trajectory and power, and releases to let the ball fly. The ball will stick to any surface but will break on red surfaces. The goal is to get to the end of the level with the fewest jumps."
 
   },
   {
