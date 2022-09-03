@@ -121,6 +121,8 @@ function LoadMiniProjects()
           </a>`
         }
 
+        var lazyLoading = miniProjectJson[i].imageExtension == 'gif' ? ` loading="lazy"` : '';
+
         miniProjectsElement.innerHTML += downloadButton + `
           <div class="miniproject">
           <div class="miniproject-title">
@@ -128,7 +130,7 @@ function LoadMiniProjects()
             <h2>` + miniProjectJson[i].engine + `</h2>
           </div>
           <br>
-          <img src="images/previews/miniprojects/` + miniProjectJson[i].name + `.` + miniProjectJson[i].imageExtension + `">
+          <img src="images/previews/miniprojects/` + miniProjectJson[i].name + `.` + miniProjectJson[i].imageExtension + `" ` + lazyLoading + `>
           <div class="miniproject-text">
             ` + miniProjectJson[i].description + `
           </div>` + `` + `</div>

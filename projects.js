@@ -67,6 +67,15 @@ var miniProjectData = `[
 
   },
   {
+    "name": "dronerepairkit",
+    "fullname": "Drone Repair Kit",
+    "engine": "Unity Engine - Modding",
+    "imageExtension": "gif",
+    "downloadLink": "https://thunderstore.io/package/Griff/Drone_Repair_Kit/",
+    "description": "Drone Repair Kit is a mod for Risk of Rain 2. This project was the first mod I have created for a game, made to add to the community and test how I can increase mod support in my own projects. The mod adds an equipment item that replicates the functionality of the Drone Repair Kit item from Risk of Rain 1. When used it repairs all friendly drones and purchases broken drones for free. As of now the mod has received over 20,000 downloads."
+
+  },
+  {
   "name": "meatman",
   "fullname": "Meat Man",
   "engine": "C++, SFML",
@@ -94,12 +103,12 @@ var miniProjectData = `[
 
   },
   {
-  "name": "dronerepairkit",
-  "fullname": "Drone Repair Kit",
-  "engine": "Unity Engine - Modding",
+  "name": "geneticalgo",
+  "fullname": "Genetic Algorithm",
+  "engine": "C++, SFML",
   "imageExtension": "gif",
-  "downloadLink": "https://thunderstore.io/package/Griff/Drone_Repair_Kit/",
-  "description": "Drone Repair Kit is a mod for Risk of Rain 2. This project was the first mod I have created for a game, made to add to the community and test how I can increase mod support in my own projects. The mod adds an equipment item that replicates the functionality of the Drone Repair Kit item from Risk of Rain 1. When used it repairs all friendly drones and purchases broken drones for free. As of now the mod has received over 20,000 downloads."
+  "downloadLink": "https://drive.google.com/file/d/1yZJWHSog1cVKCwc35p_5zGzg_6H4F4EW/view?usp=sharing",
+  "description": "This is a basic genetic algorithm programmed in C++ and rendered in SFML. This was made as a machine-learning and generational structure test. This algorithm simulates the pink dot's survival in this forest, determined by its' ability to value different resources and the distance it takes to reach them. There are 3 resources in the map - food, wood and water. Food and wood both function identically in that they replenish when there are few on the map, but the survivor needs more food than wood each day to survive. Water is needed the most but there are only 3 nodes on the map at any given time and they change locations each day. The survivor requires enough food, water and wood to survive each day, and can only spend a certain amount of energy moving between nodes before having to go home. The survivor can mutate its priority for each resource node separately and how much it values closer nodes. The best 2 survivors in each generation will create the next generation with various mutations. Leaving the simulation running, the best mutated survivors in the later generations can survive for thousands of days."
 
   }
 ]`
