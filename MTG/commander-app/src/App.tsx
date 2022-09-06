@@ -34,7 +34,9 @@ function App() {
 
 function MyButton() {
   return(
-    <button>I'm a button</button>
+    <button>
+      Begin
+    </button>
   );
 }
 
