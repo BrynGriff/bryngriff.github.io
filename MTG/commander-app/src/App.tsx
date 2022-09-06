@@ -22,9 +22,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>{user.name}</h1>
-        <h2>{user.description}</h2>
-        <ListFood />
         <MyButton />
 
       </header>
@@ -35,7 +32,7 @@ function App() {
 function MyButton() {
   return(
     <button>
-      Begin
+      <p>Begin</p>
     </button>
   );
 }
