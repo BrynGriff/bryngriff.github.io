@@ -1,3 +1,4 @@
+//import fetch from 'node-fetch';
 let commanderParams = "type:creature+type:legendary+legal:commander+layout:normal";
 let stepList = [];
 let commanderList = [];
@@ -22,7 +23,6 @@ async function GetColors(colors)
 	let params = commanderParams + '+id:' + colors;
 	commandersInColor = await search(params)
 	//console.log(JSON.stringify(commandersInColor));
-	console.log(commandersInColor);
 	await ProcessColors(commandersInColor);
 
 	if (!includeColorless)
@@ -51,14 +51,14 @@ let maxSteps = 4;
 // Begins a step in the quiz
 function BeginStep(step)
 {
-	console.log(commanderList);
+	//console.log(commanderList);
 	stepList[currentStep] = [...commanderList];
 	switch(step)
 	{
 		case 0:
 			console.log("Get some colours");
 			stepFunction = GetColors;
-			InputAnswer('WUBRGC');
+			InputAnswer('W');
 			break;
 		case 1:
 			stepFunction = FilterCost;
@@ -69,13 +69,13 @@ function BeginStep(step)
 		case 2:
 			stepFunction = FilterByWordy;
 			console.log("Wordy commander?");
-			InputAnswer('high');
+			InputAnswer('low');
 			break;
 
 		case 3:
 			stepFunction = FilterByKeywords;
 			console.log("Keywords?");
-			InputAnswer('all');
+			InputAnswer('high');
 			break;
 		case maxSteps:
 			console.log("Displaying cards");
@@ -99,7 +99,7 @@ function DisplayCards()
 		console.log("Here is " + commander.name);
 		body.innerHTML += `<img src="` + commander.image_uris.normal + `" loading="lazy" style="max-width: 250px;">`;
 	}
-	console.log(commanderList);
+	//console.log(commanderList);
 }
 
 function shuffle(array) {
@@ -255,6 +255,7 @@ function FilterCost(input)
 	let lowMax = 4;
 	let highMin = 6;
 
+	// Add to new list based on values
 	let filteredList = [];
 	for (const commander of commanderList)
 	{
@@ -283,64 +284,53 @@ function FilterCost(input)
 // 'high', 'low', 'all'
 function FilterByKeywords(input)
 {
+	// Randomize the list for low keyword counts to appear randomly
 	shuffle(commanderList);
+
+	// Return if no input specified
 	if (input != 'high' && input != 'low')
 	{
 		return;
 	}
 
-	let highKeywords = -Infinity;
-	let lowKeywords = Infinity;
-	let allKeywords = [];
+	// Store keyword length of every commander
 	for (const commander of commanderList)
 	{
-		if (typeof(commander.keywords) == 'undefined')
-		{
-			lowKeywords = 0;
-			allKeywords.push(0);
-			commander.keywordLength = 0;
-			continue;
-		}
-		let length = commander.keywords.length;
-		commander.keywordLength = length;
-		allKeywords.push(length);
-		if (length > highKeywords)
-		{
-			highKeywords = length;
-		}
-		if (length < lowKeywords)
-		{
-			lowKeywords = length;
-		}
-	}
-
-	let filteredList = [];
-
-	allKeywords.sort(function(a,b){
-    	return a-b;
-  	});
-
-  	commanderList.sort(function(a, b){
-  		return a.keywordLength - b.keywordLength;
-  	});
-
-	let highPoolSize = Math.max(Math.floor(allKeywords.length / 20), 10);
-	let lowPoolSize = Math.max(Math.floor(allKeywords.length / 4), 10);
-
-	let highPoint = allKeywords[allKeywords.length - highPoolSize];
-	let lowPoint = allKeywords[lowPoolSize];
-
-	for (let i = 0; i < commanderList.length; i++)
-	{
 		let length;
-		if (typeof(commanderList[i].keywords) == 'undefined')
+		if (typeof(commander.keywords) == 'undefined')
 		{
 			length = 0;
 		}
 		else
 		{
-			length = commanderList[i].keywords.length;
+			length = commander.keywords.length;
 		}
+		commander.keywordLength = length;
+	}
+
+	// Sort commander list by keyword length
+	commanderList.sort(function(a, b){
+		return a.keywordLength - b.keywordLength;
+	});
+
+	// Get top 5% or top 10
+	let highPoolSize = Math.max(Math.floor(commanderList.length / 20), 10);
+
+	// Get bottom 25% or bottom 10
+	let lowPoolSize = Math.max(Math.floor(commanderList.length / 4), 10);
+
+	// Get keyword breakpoints
+	let highPoint = commanderList[commanderList.length - highPoolSize].keywordLength;
+	let lowPoint = commanderList[lowPoolSize].keywordLength;
+
+	let filteredList = [];
+
+	// Add commanders to filtered list based on length
+	for (let i = 0; i < commanderList.length; i++)
+	{
+		let length = commanderList[i].keywordLength;
+
+		// Add to list if low keywords and input is low
 		if (input == 'low' && length <= lowPoint)
 		{
 			filteredList.push(commanderList[i]);
@@ -348,10 +338,13 @@ function FilterByKeywords(input)
 
 		if (input == 'high')
 		{
+			// Length of less than 2 is not a lot of keywords so only add if there are going to be less than 10
 			if (length < 2 && i < (commanderList.length - 10))
 			{
 				continue;
 			}
+
+			// Add to list if high keywords
 			if (length >= highPoint)
 			{
 				filteredList.push(commanderList[i]);
@@ -359,11 +352,13 @@ function FilterByKeywords(input)
 		}
 	}
 
+	// Ignore this function if the list is somehow empty (it should never be)
 	if (filteredList.length == 0)
 	{
 		return;
 	}
 
+	// Override commander list
 	commanderList = filteredList;
 
 }
