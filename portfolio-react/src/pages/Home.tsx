@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
-import Contact from '../App';
+import {Contact} from '../App';
 
 function Home() {
   document.title = "Bryn Griffiths - Portfolio";
@@ -35,7 +35,7 @@ function Home() {
 function Projects()
 {
   const json = JSON.parse(projectData);
-  const projects = [];
+  const projects: JSX.Element[] = [];
   for (let i = 0; i < json.length; i++)
   {
     let thumbnail, subtext, url, displayName: string;
