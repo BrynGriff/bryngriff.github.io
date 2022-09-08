@@ -1,8 +1,11 @@
 import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
+import Contact from '../App';
 
 function Home() {
+  document.title = "Bryn Griffiths - Portfolio";
+  console.log("Rendering home");
   return (
     <div className="App">
       <div id="title-card">
@@ -23,9 +26,7 @@ function Home() {
         <Projects />
       </div>
 
-      <div id="contact">
-        <p><span className="grey-text">E-Mail</span> tnzgriff@gmail.com <span className="hide-on-mobile" style={{ float: 'right' }}>Website by Bryn Griffiths</span></p>
-      </div>
+      <Contact />
 
     </div>
   );
@@ -41,7 +42,7 @@ function Projects()
 
     thumbnail = `images/thumbnails/` + json[i].name + `.png`;
     subtext = json[i].engine + ` - `+ json[i].year;
-    url = `project.html?` + json[i].name;
+    url = `project?` + json[i].name;
     displayName = json[i].displayName;
 
     projects.push(<ProjectButton displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url}/>);
@@ -51,7 +52,7 @@ function Projects()
       thumbnail = 'images/thumbnails/miniprojects.png';
       displayName = 'Mini Projects';
       subtext = 'Unreal, C++, etc';
-      url = 'miniprojects.html';
+      url = 'miniprojects';
       projects.push(<ProjectButton displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url}/>);
     }
   }

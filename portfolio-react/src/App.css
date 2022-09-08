@@ -71,13 +71,9 @@ body, .loader-wrapper{
 	text-align: center;
 	line-height: 10px;
 	white-space: nowrap;
-}
-
-#title-card:before{
-	  content: '';
-	  display: inline-block;
-	  height: 100%;
-	  vertical-align: middle;
+	display:flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #name-card{
