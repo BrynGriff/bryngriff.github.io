@@ -29,8 +29,8 @@ function Project() {
   }
 
   projectObject = json.find((element: Project) => element.name == queryString);
-  console.log(projectObject.fullName);
-  console.log(projectObject.content);
+  
+  document.title=projectObject.fullName + " - Bryn Griffiths";
 
   return (
     <div className="App">
