@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
-import {Contact} from '../App';
+import {Contact, LoadingScreen} from '../App';
 import { basename } from 'node:path/win32';
 
 interface Project{
@@ -36,7 +36,7 @@ function Project() {
     <div className="App">
       
       <ProjectBody name={projectObject.fullName} downloadUrl={projectObject.downloadLink} content={ProjectContent(projectObject)} bannerPath = {`images/banners/` + projectObject.name + `.png`}/>
-      <Contact />
+
     </div>
   );
 }
@@ -110,7 +110,7 @@ interface ProjectBodyProps {
   content?: JSX.Element;
   bannerPath: string;
 }
-function ProjectBody({name= "Test", downloadUrl="", content, bannerPath} : ProjectBodyProps)
+export function ProjectBody({name= "Test", downloadUrl="", content, bannerPath} : ProjectBodyProps)
 {
 return(
   <>

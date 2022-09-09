@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
-import {Contact} from '../App';
+import {Contact, LoadingScreen} from '../App';
 
 function Home() {
   document.title = "Bryn Griffiths - Portfolio";
@@ -26,7 +26,6 @@ function Home() {
         <Projects />
       </div>
 
-      <Contact />
 
     </div>
   );

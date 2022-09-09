@@ -43,6 +43,20 @@ body, .loader-wrapper{
   align-items: center;
 }
 
+.fadeOut {
+	animation: fadeOutAnimation 1s forwards;
+	pointer-events: none;
+}
+  
+@keyframes fadeOutAnimation {
+0% {
+	opacity: 1;
+}
+100%{
+	opacity:0;
+}
+}
+
 .loader-wrapper img{
 	height: 20vmin;
 	width: 20vmin;
