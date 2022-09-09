@@ -28,7 +28,7 @@ export function Contact()
 {
   return(
   <div id="contact">
-    <p><span className="grey-text">E-Mail</span> tnzgriff@gmail.com <span className="hide-on-mobile" style={{ float: 'right' }}>Website by Bryn Griffiths</span></p>
+    <p><span className="grey-text">E-Mail</span> tnzgriff@gmail.com <span className="hide-on-mobile" style={{ float: 'right' }}>Made with React by Bryn Griffiths</span></p>
   </div>);
 }
 
