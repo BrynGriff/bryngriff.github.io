@@ -3,6 +3,7 @@ body{
 	margin: 0px;
 	font-family: trebuchet ms, sans-serif;
 	color: #f3eee9;
+	overflow-x: clip;
 }
 
 html, body{
@@ -43,9 +44,63 @@ body, .loader-wrapper{
   align-items: center;
 }
 
+.fading
+{
+	pointer-events: none;
+}
+
 .fadeOut {
 	animation: fadeOutAnimation 1s forwards;
+	animation-timing-function: ease-out;
 	pointer-events: none;
+}
+
+@keyframes fadeIn{
+	0%
+	{
+		opacity:0;
+	}
+	100%
+	{
+		opacity:1;
+	}
+}
+
+.fadeInLeft
+{
+	animation: slideInLeft 1s forwards, fadeIn 1s forwards;
+}
+
+.fadeInDown
+{
+	animation: slideDown 1s forwards, fadeIn 1s forwards;
+}
+
+@keyframes slideInLeft{
+	0%{
+		transform: translate(200px, 0);
+	}
+	100%{
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes slideDown{
+	0%{
+		transform: translate(0, -100px);
+	}
+	100%{
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes slideUp{
+	0%{
+		transform: translate(0, 200px);
+	}
+	100%{
+		transform: translate(0, 0);
+	}
 }
   
 @keyframes fadeOutAnimation {
@@ -171,6 +226,7 @@ body, .loader-wrapper{
 #info-card-text{
 	margin-left: 7.5%;
 	margin-right: 7.5%;
+	overflow-x:clip;
 }
 
 #contact{
@@ -218,11 +274,15 @@ body, .loader-wrapper{
 	min-width: 275px;
 	max-width: 18vw;
 	white-space: nowrap;
-	transition: transform 0.2s ease-out;
 	width: 100%;
-		max-width: 22.5vw;
-		flex-basis: 20%;
-		  	flex-grow: 1;
+	max-width: 22.5vw;
+	flex-basis: 20%;
+	flex-grow: 1;
+	transition: transform 0.2s ease-out;
+}
+
+.block-transitions{
+	transition: initial;
 }
 
 .project-button:hover{

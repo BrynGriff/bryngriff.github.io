@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import '../App.css';
 import {Outlet} from "react-router-dom";
 import { clear } from 'node:console';
+import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 
 function Layout() {
   return (
@@ -48,6 +49,8 @@ function FadeLoadingScreen(loadingScreen: HTMLInputElement)
   // Check div for flag
   if (!loadingScreen.classList.contains("fading"))
   {
+    OnLoad();
+
     // Add flag to div
     loadingScreen.classList.add("fading");
 
@@ -79,6 +82,133 @@ function FadeLoadingScreen(loadingScreen: HTMLInputElement)
       }
   }, 0);
   }
+}
+
+function OnLoad()
+{
+  let classTest = document.querySelectorAll<HTMLElement>('[data-slide-fade]');
+  for (let i = 0; i < classTest.length; i++)
+  {
+    let slideFadeData = JSON.parse(classTest[i].getAttribute('data-slide-fade')!) as SlideFadeData;
+    SlideFadeIn(classTest[i], slideFadeData);
+  }
+}
+
+export function CreateSlideFade(time: number = 1000, direction: string = 'down', distance:number = 100, fade:boolean = true, delay:number = 0)
+{
+  return JSON.stringify({fade, time, direction, distance, delay});
+} 
+
+export interface SlideFadeData {
+  fade: boolean;
+  time: number;
+  direction: string;
+  distance: number;
+  delay: number;
+}
+
+export function SlideFadeIn(element: HTMLElement, data: SlideFadeData)
+{
+  element.classList.add("block-transitions");
+  let directionCSS = "";
+  if (data.direction == 'left')
+  {
+    directionCSS = `translateX(`
+  }
+  else if (data.direction == 'right')
+  {
+    directionCSS = `translateX(-`
+  }
+  else if (data.direction == 'up')
+  {
+    directionCSS = `translateY(`
+  }
+  else
+  {
+    directionCSS = `translateY(-`
+  }
+  
+  let startTime = 0;
+
+  SetSlidePosition(0, element, data, directionCSS);
+
+  let setStartingTime = false;
+  setTimeout(() => {
+    let fadeInterval = setInterval(() => {
+
+      if (!setStartingTime)
+      {
+        setStartingTime = true;
+        startTime = Date.now();
+      }
+
+      // If no opacity is set, set it first
+      if (!element.style.transform)
+      {
+        element.style.transform = '';
+      }
+  
+      if (!element.style.opacity && data.fade)
+      {
+        element.style.opacity = '0';
+      }
+  
+      // Calculate delta time
+      let now = Date.now();
+      let age = now - startTime;
+      
+      let t = (age / data.time);
+      let exit = false;
+  
+      if (t >= 1)
+      {
+        exit = true;
+        t = 1;
+      }
+  
+      let lerpValue = EaseOut(t);
+  
+      SetSlidePosition(lerpValue, element, data, directionCSS);
+  
+      if (exit)
+      {
+        // Stop the timer
+        element.style.transform = '';
+        element.classList.remove("block-transitions");
+        clearInterval(fadeInterval);
+      }
+  }, 0);
+  }, data.delay);
+}
+
+function SetSlidePosition(t: number, element: HTMLElement, data: SlideFadeData, directionCSS: string)
+{
+  let x: number = Lerp(data.distance, 0, t);
+
+  element.style.transform = `` + directionCSS + x +`px)`;
+  
+  if (data.fade)
+  {
+    element.style.opacity = String(t);
+  }
+}
+
+function InverseLerp (start: number, end: number, value: number){
+  return (value - start) / (end - start);
+}
+
+function Lerp (start: number, end: number, value: number){
+  return (1-value)*start+value*end
+}
+
+function EaseOut(x: number)
+{
+    return 1 - pow(1 - x);
+}
+
+function pow(x: number)
+{
+  return x * x * x;
 }
 
 export default Layout;

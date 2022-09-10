@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
 import { basename } from 'node:path/win32';
+import {CreateSlideFade} from './Layout';
 
 interface Project{
   name: string;
@@ -133,7 +134,7 @@ return(
   </div>
   <div id = "project-body">
     <div id="project-banner" style={{backgroundImage: `url(${require("../" + bannerPath)})`}}>
-      <div id="project-banner-name">
+      <div id="project-banner-name" data-slide-fade={CreateSlideFade(1000, 'down', 25, true)}>
         <h1>{name}</h1>
       </div>
     </div>
