@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import logo from './logo.svg';
 import '../App.css';
 import {Outlet} from "react-router-dom";
+import { clear } from 'node:console';
 
 function Layout() {
   return (
@@ -44,13 +45,39 @@ export function LoadingScreen()
 
 function FadeLoadingScreen(loadingScreen: HTMLInputElement)
 {
-  if (!loadingScreen.classList.contains("fadeOut"))
+  // Check div for flag
+  if (!loadingScreen.classList.contains("fading"))
   {
-    loadingScreen.classList.add("fadeOut");
+    // Add flag to div
+    loadingScreen.classList.add("fading");
 
-    loadingScreen.onanimationend= (event) => {
-      loadingScreen.style.display='none';
-    }
+    // Get initial time for deltatime
+    let lastUpdate = Date.now();
+    let fadeInterval = setInterval(() => {
+
+      // If no opacity is set, set it first
+      if (!loadingScreen.style.opacity)
+      {
+        loadingScreen.style.opacity = '1';
+      }
+
+      // Calculate delta time
+      let now = Date.now();
+      let deltaTime = now - lastUpdate;
+      lastUpdate = now;
+
+
+      // If opacity is greater than 0 reduce opacity by delta time
+      if (parseFloat(loadingScreen.style.opacity) > 0) {
+        loadingScreen.style.opacity = String(parseFloat(loadingScreen.style.opacity) - 2 * (deltaTime / 1000));
+      }
+      else
+      {
+        // Stop the timer
+        clearInterval(fadeInterval);
+        loadingScreen.style.display='none';
+      }
+  }, 0);
   }
 }
 
