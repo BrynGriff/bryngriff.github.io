@@ -1,7 +1,6 @@
 import React from 'react';
 import '../App.css';
 import {projectData, miniProjectData} from '../projects.js';
-import {Contact, LoadingScreen} from '../App';
 
 function Home() {
   document.title = "Bryn Griffiths - Portfolio";

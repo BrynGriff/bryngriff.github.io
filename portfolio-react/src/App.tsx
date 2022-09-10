@@ -17,49 +17,13 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="project" element={<Project />} />
+          <Route path="project.html" element={<Project />} />
           <Route path="miniprojects" element={<MiniProjects />} />
+          <Route path="miniprojects.html" element={<MiniProjects />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
-}
-
-export function Contact()
-{
-  return(
-  <div id="contact">
-    <p><span className="grey-text">E-Mail</span> tnzgriff@gmail.com <span className="hide-on-mobile" style={{ float: 'right' }}>Made with React by Bryn Griffiths</span></p>
-  </div>);
-}
-
-export function LoadingScreen()
-{
-  const loaderWrapper = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const timeOutId = setTimeout(() => FadeLoadingScreen(loaderWrapper.current!), 2000);
-    window.addEventListener('load', (event) => {
-      FadeLoadingScreen(loaderWrapper.current!);
-    });
-  }, []);
-
-  return(
-    <div ref={loaderWrapper} className="loader-wrapper">
-      <img src={require("./images/loadingman.gif")}/>
-    </div>
-  )
-}
-
-function FadeLoadingScreen(loadingScreen: HTMLInputElement)
-{
-  if (!loadingScreen.classList.contains("fadeOut"))
-  {
-    loadingScreen.classList.add("fadeOut");
-
-    loadingScreen.onanimationend= (event) => {
-      loadingScreen.style.display='none';
-    }
-  }
 }
 
 export default App;
