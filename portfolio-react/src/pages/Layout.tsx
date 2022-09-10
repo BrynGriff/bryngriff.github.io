@@ -28,7 +28,7 @@ export function LoadingScreen()
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       FadeLoadingScreen(loaderWrapper.current!)
-    }, 1000);
+    }, 1500);
 
     window.addEventListener('load', (event) => {
       FadeLoadingScreen(loaderWrapper.current!);
