@@ -8,6 +8,7 @@ interface Project{
   fullName: string;
   downloadLink: string;
   content: ProjectParagraph[];
+  videoLink: string;
 }
 
 interface ProjectParagraph{
@@ -84,12 +85,27 @@ function ProjectImages({projectObject} : ProjectObjectProps)
   return (<>{images}</>);
 }
 
+// Creates the text section of the project page
 interface ProjectObjectProps{
   projectObject: Project;
 }
 function ProjectText({projectObject} : ProjectObjectProps)
 {
   const text = [];
+
+  // Add video if there is a valid link
+  if (typeof(projectObject.videoLink) != 'undefined')
+  {
+    text.push(
+      <>
+      <iframe className="project-video" src={projectObject.videoLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+      </iframe><br/>
+      <div className='between-line'></div>
+      </>
+      );
+  }
+
+  // Adds each paragraph and header
   for (let i = 0; i < projectObject.content.length; i++)
   {
     text.push(
