@@ -65,11 +65,14 @@ function MiniProjectContent(miniProject: MiniProject) : JSX.Element
   return(
     <>
     <div className="miniproject">
-      {miniProject.downloadLink != "" && <DownloadButton url={miniProject.downloadLink}/>}
-      <div className="miniproject-title">
-        <h1>{miniProject.fullname}</h1>
-        <h2>{miniProject.engine}</h2>
+      <div className="miniproject-header">
+        <div className="miniproject-title">
+          <h1>{miniProject.fullname}</h1>
+          <h2>{miniProject.engine}</h2>
+        </div>
+        {miniProject.downloadLink != "" && <DownloadButton url={miniProject.downloadLink}/>}
       </div>
+
       <br />
       <img src={require(`../images/previews/miniprojects/${miniProject.name}.${miniProject.imageExtension}`)} alt=""/>
       <div className="miniproject-text">

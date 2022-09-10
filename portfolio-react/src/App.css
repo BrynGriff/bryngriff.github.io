@@ -331,7 +331,7 @@ body, .loader-wrapper{
 	width: 30%;
 	min-width: 200px;
 	margin-left: 20px;
-	margin-top: 10px;
+	margin-top: 5px;
 	aspect-ratio: 4/3;
 	z-index: 40;
 	object-fit: cover;
@@ -382,9 +382,15 @@ body, .loader-wrapper{
 }
 
 .miniproject-download-button{
-		height: 40px;
-		float: right;
-		margin-top: 5px;
+	height: 40px;
+	margin-top: 5px;
+	margin-right: 0px;
+}
+
+.miniproject-header{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
 }
 
 #navbuttons
@@ -475,6 +481,12 @@ body, .loader-wrapper{
 		min-height: 225px;
 	}
 
+	.miniproject img{
+		width: 50%;
+		max-width:300px;
+		min-width:0px;
+	}
+
 	#project-body-images img{
 		aspect-ratio: 4/3;
 		margin-right: -6px;
@@ -490,7 +502,7 @@ body, .loader-wrapper{
 		width: 100%;
 	}
 
-	#project-body-text{
+	#project-body-text, #project-body-miniprojects{
 		width: 100%;
 		margin: 0;
 		padding-left: 5%;
