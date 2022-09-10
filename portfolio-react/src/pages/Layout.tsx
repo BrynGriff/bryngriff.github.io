@@ -4,6 +4,7 @@ import '../App.css';
 import {Outlet} from "react-router-dom";
 import { clear } from 'node:console';
 import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
+import { BooleanLiteral } from 'typescript';
 
 function Layout() {
   return (
@@ -91,12 +92,13 @@ function OnLoad()
   {
     let slideFadeData = JSON.parse(classTest[i].getAttribute('data-slide-fade')!) as SlideFadeData;
     SlideFadeIn(classTest[i], slideFadeData);
+
   }
 }
 
-export function CreateSlideFade(time: number = 1000, direction: string = 'down', distance:number = 100, fade:boolean = true, delay:number = 0)
+export function CreateSlideFade(time: number = 1000, direction: string = 'down', distance:number = 100, fade:boolean = true, delay:number = 0, waitForLoad:boolean = false)
 {
-  return JSON.stringify({fade, time, direction, distance, delay});
+  return JSON.stringify({fade, time, direction, distance, delay, waitForLoad});
 } 
 
 export interface SlideFadeData {
@@ -105,10 +107,12 @@ export interface SlideFadeData {
   direction: string;
   distance: number;
   delay: number;
+  waitForLoad: boolean;
 }
 
 export function SlideFadeIn(element: HTMLElement, data: SlideFadeData)
 {
+  element.setAttribute('transitioning', 'true');
   element.classList.add("block-transitions");
   let directionCSS = "";
   if (data.direction == 'left')
@@ -128,57 +132,84 @@ export function SlideFadeIn(element: HTMLElement, data: SlideFadeData)
     directionCSS = `translateY(-`
   }
   
+  SetSlidePosition(0, element, data, directionCSS);
+  let delayFinished = false;
+  setTimeout(() => {
+    delayFinished = true;
+  }, data.delay);
+
+  let loaded: boolean = false;
+  if (!data.waitForLoad)
+  {
+    loaded = true;
+  }
+  let waitInterval = setInterval(() => {
+    if (!loaded)
+    {
+      if ((element as HTMLImageElement).complete)
+      {
+        loaded = true;
+      }
+    }
+    if (delayFinished && loaded)
+    {
+      StartSlideFade(element, data, directionCSS);
+      clearInterval(waitInterval);
+    }
+  }, 10);
+}
+
+function StartSlideFade(element: HTMLElement, data: SlideFadeData, directionCSS: string)
+{
   let startTime = 0;
 
   SetSlidePosition(0, element, data, directionCSS);
 
   let setStartingTime = false;
-  setTimeout(() => {
-    let fadeInterval = setInterval(() => {
+  let fadeInterval = setInterval(() => {
 
-      if (!setStartingTime)
-      {
-        setStartingTime = true;
-        startTime = Date.now();
-      }
+    if (!setStartingTime)
+    {
+      setStartingTime = true;
+      startTime = Date.now();
+    }
 
-      // If no opacity is set, set it first
-      if (!element.style.transform)
-      {
-        element.style.transform = '';
-      }
-  
-      if (!element.style.opacity && data.fade)
-      {
-        element.style.opacity = '0';
-      }
-  
-      // Calculate delta time
-      let now = Date.now();
-      let age = now - startTime;
-      
-      let t = (age / data.time);
-      let exit = false;
-  
-      if (t >= 1)
-      {
-        exit = true;
-        t = 1;
-      }
-  
-      let lerpValue = EaseOut(t);
-  
-      SetSlidePosition(lerpValue, element, data, directionCSS);
-  
-      if (exit)
-      {
-        // Stop the timer
-        element.style.transform = '';
-        element.classList.remove("block-transitions");
-        clearInterval(fadeInterval);
-      }
-  }, 0);
-  }, data.delay);
+    // If no opacity is set, set it first
+    if (!element.style.transform)
+    {
+      element.style.transform = '';
+    }
+
+    if (!element.style.opacity && data.fade)
+    {
+      element.style.opacity = '0';
+    }
+
+    // Calculate delta time
+    let now = Date.now();
+    let age = now - startTime;
+    
+    let t = (age / data.time);
+    let exit = false;
+
+    if (t >= 1)
+    {
+      exit = true;
+      t = 1;
+    }
+
+    let lerpValue = EaseOut(t);
+
+    SetSlidePosition(lerpValue, element, data, directionCSS);
+
+    if (exit)
+    {
+      // Stop the timer
+      element.style.transform = '';
+      element.classList.remove("block-transitions");
+      clearInterval(fadeInterval);
+    }
+}, 0);
 }
 
 function SetSlidePosition(t: number, element: HTMLElement, data: SlideFadeData, directionCSS: string)
