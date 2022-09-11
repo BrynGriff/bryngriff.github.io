@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a38a8523.css",
-    "main.js": "/static/js/main.ae4f4bee.js",
+    "main.css": "/static/css/main.18cede81.css",
+    "main.js": "/static/js/main.c8fad90c.js",
     "static/js/787.aeca62f9.chunk.js": "/static/js/787.aeca62f9.chunk.js",
     "static/media/quantumhalt.gif": "/static/media/quantumhalt.09e442046f2063e3ef09.gif",
     "static/media/mages.gif": "/static/media/mages.ca6b52f62248b2d40a99.gif",
@@ -18,6 +18,7 @@
     "static/media/4.png": "/static/media/4.ad24f72cfbc0f4b65704.png",
     "static/media/miniprojects.png": "/static/media/miniprojects.3fdce3621b9e6f529e94.png",
     "static/media/persist.png": "/static/media/persist.6bc4f591fea4f8c7eec3.png",
+    "static/media/portfolio.png": "/static/media/portfolio.808f6ca1c66816f7576d.png",
     "static/media/pathfinding.gif": "/static/media/pathfinding.62bcbc0eb6fb7c526fcc.gif",
     "static/media/title-card.png": "/static/media/title-card.d1ecb20d9a3bdefad751.png",
     "static/media/geneticalgo.gif": "/static/media/geneticalgo.666552d0a7d0973e54ee.gif",
@@ -26,12 +27,12 @@
     "static/media/stickyball.png": "/static/media/stickyball.af20240c5520a22be546.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/index.html",
-    "main.a38a8523.css.map": "/static/css/main.a38a8523.css.map",
-    "main.ae4f4bee.js.map": "/static/js/main.ae4f4bee.js.map",
+    "main.18cede81.css.map": "/static/css/main.18cede81.css.map",
+    "main.c8fad90c.js.map": "/static/js/main.c8fad90c.js.map",
     "787.aeca62f9.chunk.js.map": "/static/js/787.aeca62f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a38a8523.css",
-    "static/js/main.ae4f4bee.js"
+    "static/css/main.18cede81.css",
+    "static/js/main.c8fad90c.js"
   ]
 }
