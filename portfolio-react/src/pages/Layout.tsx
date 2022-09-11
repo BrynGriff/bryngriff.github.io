@@ -114,35 +114,25 @@ export function SlideFadeIn(element: HTMLElement, data: SlideFadeData)
 {
   element.setAttribute('transitioning', 'true');
   element.classList.add("block-transitions");
-  let directionCSS = "";
-  if (data.direction == 'left')
-  {
-    directionCSS = `translateX(`
-  }
-  else if (data.direction == 'right')
-  {
-    directionCSS = `translateX(-`
-  }
-  else if (data.direction == 'up')
-  {
-    directionCSS = `translateY(`
-  }
-  else
-  {
-    directionCSS = `translateY(-`
-  }
+  let directionCSS = GetDirectionCSS(data.direction);
   
+  // Set initial position
   SetSlidePosition(0, element, data, directionCSS);
+
+  // Wait for delay to finish at minimum
   let delayFinished = false;
   setTimeout(() => {
     delayFinished = true;
   }, data.delay);
 
+  // Don't check for load if we don't have to
   let loaded: boolean = false;
   if (!data.waitForLoad)
   {
     loaded = true;
   }
+
+  // Check every 10ms that the delay is finished and the load is also finished
   let waitInterval = setInterval(() => {
     if (!loaded)
     {
@@ -159,48 +149,65 @@ export function SlideFadeIn(element: HTMLElement, data: SlideFadeData)
   }, 10);
 }
 
+function GetDirectionCSS(direction: string)
+{
+  if (direction == 'left')
+  {
+    return `translateX(`;
+  }
+  else if (direction == 'right')
+  {
+    return `translateX(-`;
+  }
+  else if (direction == 'up')
+  {
+    return `translateY(`;
+  }
+  return `translateY(-`;
+}
+
 function StartSlideFade(element: HTMLElement, data: SlideFadeData, directionCSS: string)
 {
-  let startTime = 0;
+  // Get starting time for delta time
+  let startTime = Date.now();;
 
+  // Set to 0 starting position
   SetSlidePosition(0, element, data, directionCSS);
 
-  let setStartingTime = false;
+  // Set transform styling if undefined
+  if (!element.style.transform)
+  {
+    element.style.transform = '';
+  }
+
+  // Set opacity styling if undefined
+  if (!element.style.opacity && data.fade)
+  {
+    element.style.opacity = '0';
+  }
+
   let fadeInterval = setInterval(() => {
-
-    if (!setStartingTime)
-    {
-      setStartingTime = true;
-      startTime = Date.now();
-    }
-
-    // If no opacity is set, set it first
-    if (!element.style.transform)
-    {
-      element.style.transform = '';
-    }
-
-    if (!element.style.opacity && data.fade)
-    {
-      element.style.opacity = '0';
-    }
 
     // Calculate delta time
     let now = Date.now();
     let age = now - startTime;
     
+    // Normalize the time range
     let t = (age / data.time);
-    let exit = false;
 
+    // If t > 1 we are finished, set exit flag
+    let exit = false;
     if (t >= 1)
     {
       exit = true;
       t = 1;
     }
 
-    let lerpValue = EaseOut(t);
+    // Run t through easing function
+    let timeEasedNormalized = EaseOut(t);
 
-    SetSlidePosition(lerpValue, element, data, directionCSS);
+    // Set the slide position based on the eased time
+    SetSlidePosition(timeEasedNormalized, element, data, directionCSS);
 
     if (exit)
     {
@@ -209,15 +216,18 @@ function StartSlideFade(element: HTMLElement, data: SlideFadeData, directionCSS:
       element.classList.remove("block-transitions");
       clearInterval(fadeInterval);
     }
-}, 0);
+  }, 0);
 }
 
 function SetSlidePosition(t: number, element: HTMLElement, data: SlideFadeData, directionCSS: string)
 {
+  // Lerp from distance to 0
   let x: number = Lerp(data.distance, 0, t);
 
+  // Set transform using directional CSS
   element.style.transform = `` + directionCSS + x +`px)`;
   
+  // If we are fading also set the opacity
   if (data.fade)
   {
     element.style.opacity = String(t);
