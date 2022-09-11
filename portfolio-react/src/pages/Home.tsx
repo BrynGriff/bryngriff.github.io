@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import {projectData, miniProjectData} from '../projects.js';
+import {projectJSON, miniProjectData} from '../projects.js';
 import {CreateSlideFade} from './Layout';
 
 function Home() {
@@ -18,7 +18,7 @@ function Home() {
         <img src={require('../images/portrait.png')} alt="" data-slide-fade={CreateSlideFade(1000, 'down', 100, true, 500, true)}/>
         <div id="info-card-text">
           <h1>About Me</h1>
-          <p data-slide-fade={CreateSlideFade(1000, 'left', 100, true)}>I am a Software Engineer based in New Zealand and recently graduated with a Bachelor's Degree in Software Engineering from Media Design School. I've been making programs and games for 3 years and most recently released my biggest project, Persist, on itch.io. My showcase features game projects, but I enjoy working on any kind of cool software.</p>
+          <p data-slide-fade={CreateSlideFade(1000, 'left', 100, true)}>I am a Software Engineer based in New Zealand and recently graduated with a Bachelor's Degree in Software Engineering from Media Design School. I've been making programs and games for 3 years and most recently released my biggest project, Persist, on itch.io. My showcase features game and web projects, but I enjoy working on any kind of cool software.</p>
         </div>
       </div>
 
@@ -33,18 +33,21 @@ function Home() {
 
 function Projects()
 {
-  const json = JSON.parse(projectData);
+  const projectData = JSON.parse(projectJSON);
   const projects: JSX.Element[] = [];
-  let buttonCount:number = 0;
-  let buttonDelay = 100;
-  for (let i = 0; i < json.length; i++)
+  let buttonCount: number = 0;
+  let buttonDelay: number = 100;
+
+  // Create button elements
+  for (let i = 0; i < projectData.length; i++)
   {
     let thumbnail, subtext, url, displayName: string;
 
-    thumbnail = `images/thumbnails/` + json[i].name + `.png`;
-    subtext = json[i].engine + ` - `+ json[i].year;
-    url = `project?` + json[i].name;
-    displayName = json[i].displayName;
+    // Set button data from JSON
+    thumbnail = `images/thumbnails/` + projectData[i].name + `.png`;
+    subtext = projectData[i].engine + ` - `+ projectData[i].year;
+    url = `project?` + projectData[i].name;
+    displayName = projectData[i].displayName;
 
     projects.push(<ProjectButton key={i} displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url} delay={buttonDelay * buttonCount}/>);
     buttonCount++;

@@ -1,4 +1,4 @@
-export const projectData = `[
+export const projectJSON = `[
   {
     "name": "persist",
     "fullName": "Persist",
@@ -27,6 +27,32 @@ export const projectData = `[
       {
         "header": "Inspirations",
         "paragraph": "Persist was inspired by several titles that we referred back to from time to time to gauge the level of polish we could still add in our timeframe. The roguelike dungeon crawler elements were inspired by games such as Risk of Rain, Dead Cells and the Binding of Isaac. The fast-paced hack-and-slash combat was inspired by games like Kingdom Hearts, Devil May Cry and the Souls series."
+      }
+    ]
+  },
+  {
+    "name": "portfolio",
+    "fullName": "Portfolio Site",
+    "displayName": "Portfolio Site",
+    "engine": "React, Typescript",
+    "year": 2022,
+    "downloadLink": "",
+    "content": [
+      {
+        "header": "Overview",
+        "paragraph": "The portfolio website I created to showcase my development was made from scratch in React with Typescript and hosted on Github Pages. I opted for this instead of using something such as Jekyll or Wordpress as it would allow me to personalise my portfolio. On top of this, the portfolio itself can act as another showcase of my development work."
+      },
+      {
+        "header": "Content",
+        "paragraph": "The design of the portfolio was kept simplistic, with few separate page designs apart from the main project pages. This was to keep the content of the portfolio clean and easy to navigate in a short space of time without needing to actively look for different pages. This is why the 'about me' section of the page and the main project showcase is all built into the homepage. The content of each project is fetched from a JSON file, as opposed to a database, to keep the page static."
+      },
+      {
+        "header": "Responsiveness",
+        "paragraph": "I assumed that people looking at my portfolio would do so on a variety of different screens and devices. As such, each page collapses down into a format that can be read and navigated easily on mobile. The images on the right of each project page collapse into a scrollable gallery at the top of the page. On the homepage, the number of columns on the project buttons decreases, and the layout becomes vertical."
+      },
+      {
+        "header": "Transitions",
+        "paragraph": "Because the page features a loading screen while content loads, elements had to be managed so they fired when the page loaded. To account for this and streamline transition creation, I created an element attribute that allows customizable transitions with length, direction, distance, and delay that executes in Javascript on page load. This allowed me to script images, headers, and buttons to load in sequence and with varying distance without having to create new CSS for each transition type."
       }
     ]
   },

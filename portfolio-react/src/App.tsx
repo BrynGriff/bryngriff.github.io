@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {projectData, miniProjectData} from './projects.js';
 import {Outlet} from "react-router-dom";
 import { url } from 'inspector';
 import { BrowserRouter, Routes, Route } from "react-router-dom";

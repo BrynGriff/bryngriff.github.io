@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import {projectData, miniProjectData} from '../projects.js';
+import {projectJSON, miniProjectData} from '../projects.js';
 import { basename } from 'node:path/win32';
 import {CreateSlideFade} from './Layout';
 
@@ -18,7 +18,7 @@ interface ProjectParagraph{
 }
 
 function Project() {
-  const json = JSON.parse(projectData);
+  const json = JSON.parse(projectJSON);
 
   let queryString: string = window.location.search;
   queryString = queryString.substring(1);

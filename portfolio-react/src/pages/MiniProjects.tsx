@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import {projectData, miniProjectData} from '../projects.js';
+import {projectJSON, miniProjectData} from '../projects.js';
 import { basename } from 'node:path/win32';
 import {ProjectBody} from './Project';
 import {CreateSlideFade} from './Layout';
