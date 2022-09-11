@@ -9,9 +9,9 @@ function Home() {
   return (
     <div className="App">
       <div id="title-card">
-        <div id="name-card" data-slide-fade={CreateSlideFade(1000, 'right', 100, true)}>
-          <h1>Bryn Griffiths</h1>
-          <h2>Software Engineer</h2>
+        <div id="name-card">
+          <h1 data-slide-fade={CreateSlideFade(1000, 'right', 100, true)}>Bryn Griffiths</h1>
+          <h2 data-slide-fade={CreateSlideFade(1000, 'right', 50, true, 500)}>Software Engineer</h2>
         </div>
       </div>
       <div id="info-card">
