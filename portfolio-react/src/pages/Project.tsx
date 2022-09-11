@@ -76,11 +76,12 @@ interface ProjectObjectProps{
 }
 function ProjectImages({projectObject} : ProjectObjectProps)
 {
+  let loadDelay = 100;
   const images = [];
   for (let i = 0; i < 4; i++)
   {
     images.push(
-    <img src={require(`../images/previews/${projectObject.name}/${i + 1}.png`)}></img>
+    <img src={require(`../images/previews/${projectObject.name}/${i + 1}.png`)} data-slide-fade={CreateSlideFade(500, 'left', 50, true, i * loadDelay, true)}></img>
     );
   }
   return (<>{images}</>);
@@ -109,9 +110,10 @@ function ProjectText({projectObject} : ProjectObjectProps)
   // Adds each paragraph and header
   for (let i = 0; i < projectObject.content.length; i++)
   {
+    let loadDelay = 200;
     text.push(
       <>
-      <h1>{projectObject.content[i].header}</h1>
+      <h1 data-slide-fade={CreateSlideFade(500, 'right', 50, true, loadDelay * i * 0.5)}>{projectObject.content[i].header}</h1>
       {projectObject.content[i].paragraph}
       {i != projectObject.content.length - 1 && <div className='between-line'/>}
       </>
