@@ -46,7 +46,7 @@ function Projects()
     url = `project?` + json[i].name;
     displayName = json[i].displayName;
 
-    projects.push(<ProjectButton displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url} delay={buttonDelay * buttonCount}/>);
+    projects.push(<ProjectButton key={i} displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url} delay={buttonDelay * buttonCount}/>);
     buttonCount++;
     
     if (i === 2)
@@ -55,7 +55,7 @@ function Projects()
       displayName = 'Mini Projects';
       subtext = 'Unreal, C++, etc';
       url = 'miniprojects';
-      projects.push(<ProjectButton displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url} delay={buttonDelay * buttonCount}/>);
+      projects.push(<ProjectButton key={5000} displayName={displayName} subtext={subtext} thumbnail={thumbnail} url={url} delay={buttonDelay * buttonCount}/>);
       buttonCount++;
     }
   }

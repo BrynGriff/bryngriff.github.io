@@ -47,7 +47,7 @@ function AllMiniProjectContent(miniProjectData: MiniProject[]) : JSX.Element
     if (i != miniProjectData.length - 1)
     {
       miniProjects.push(
-        <div className="between-line"/>
+        <div key={(i + 10) * 5000} className="between-line"/>
       )
     }
   }
@@ -65,24 +65,24 @@ function MiniProjectContent(miniProject: MiniProject, index: number) : JSX.Eleme
 {
   let loadDelay = 200;
   return(
-    <>
-    <div className="miniproject">
-      <div className="miniproject-header">
-        <div className="miniproject-title">
-          <h1 data-slide-fade={CreateSlideFade(500, 'right', 50, true, loadDelay * index * 0.5)}>{miniProject.fullname}</h1>
-          <h2 data-slide-fade={CreateSlideFade(500, 'right', 20, true, (loadDelay * index * 0.5) + 200)}>{miniProject.engine}</h2>
+    <div key={index}>
+      <div className="miniproject">
+        <div className="miniproject-header">
+          <div className="miniproject-title">
+            <h1 data-slide-fade={CreateSlideFade(500, 'right', 50, true, loadDelay * index * 0.5)}>{miniProject.fullname}</h1>
+            <h2 data-slide-fade={CreateSlideFade(500, 'right', 20, true, (loadDelay * index * 0.5) + 200)}>{miniProject.engine}</h2>
+          </div>
+          {miniProject.downloadLink != "" && <DownloadButton url={miniProject.downloadLink}/>}
         </div>
-        {miniProject.downloadLink != "" && <DownloadButton url={miniProject.downloadLink}/>}
-      </div>
 
-      <br />
-      <img src={require(`../images/previews/miniprojects/${miniProject.name}.${miniProject.imageExtension}`)} alt="" data-slide-fade={CreateSlideFade(500, 'left', 50, true, loadDelay * index, true)}/>
-      <div className="miniproject-text">
-        {miniProject.description}
+        <br />
+        <img src={require(`../images/previews/miniprojects/${miniProject.name}.${miniProject.imageExtension}`)} alt="" data-slide-fade={CreateSlideFade(500, 'left', 50, true, loadDelay * index, true)}/>
+        <div className="miniproject-text">
+          {miniProject.description}
+        </div>
+        <br style={{clear: 'both'}}/>
       </div>
-      <br style={{clear: 'both'}}/>
     </div>
-    </>
   );
 }
 

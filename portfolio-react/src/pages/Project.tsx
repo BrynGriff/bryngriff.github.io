@@ -56,8 +56,6 @@ function DownloadButton({url}:DownloadButtonProps)
 
 function ProjectContent(projectObject: Project)
 {
-  console.log(projectObject.fullName);
-
   return(
     <>
       <div id="project-body-images">
@@ -81,7 +79,7 @@ function ProjectImages({projectObject} : ProjectObjectProps)
   for (let i = 0; i < 4; i++)
   {
     images.push(
-    <img src={require(`../images/previews/${projectObject.name}/${i + 1}.png`)} data-slide-fade={CreateSlideFade(500, 'left', 50, true, i * loadDelay, true)}></img>
+    <img key={i} src={require(`../images/previews/${projectObject.name}/${i + 1}.png`)} data-slide-fade={CreateSlideFade(500, 'left', 50, true, i * loadDelay, true)}></img>
     );
   }
   return (<>{images}</>);
@@ -99,11 +97,11 @@ function ProjectText({projectObject} : ProjectObjectProps)
   if (typeof(projectObject.videoLink) != 'undefined')
   {
     text.push(
-      <>
-      <iframe className="project-video" src={projectObject.videoLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
-      </iframe><br/>
-      <div className='between-line'></div>
-      </>
+      <div key={5000}>
+        <iframe className="project-video" src={projectObject.videoLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+        </iframe><br/>
+        <div className='between-line'></div>
+      </div>
       );
   }
 
@@ -112,11 +110,11 @@ function ProjectText({projectObject} : ProjectObjectProps)
   {
     let loadDelay = 200;
     text.push(
-      <>
+      <div key={i}>
       <h1 data-slide-fade={CreateSlideFade(500, 'right', 50, true, loadDelay * i * 0.5)}>{projectObject.content[i].header}</h1>
       {projectObject.content[i].paragraph}
       {i != projectObject.content.length - 1 && <div className='between-line'/>}
-      </>
+      </div>
     );
   }
   return (<>{text}</>);
