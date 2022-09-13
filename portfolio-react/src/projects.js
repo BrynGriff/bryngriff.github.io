@@ -240,7 +240,7 @@ export const miniProjectData = `[
   "fullname": "Genetic Algorithm",
   "engine": "C++, SFML",
   "imageExtension": "gif",
-  "downloadLink": "https://drive.google.com/file/d/13pSwEJ1xnU3YuOjLrli5K6dmIpSDz0UF/view?usp=sharing",
+  "downloadLink": "https://www.dropbox.com/s/l0ggipsjzuqt5fx/GeneticAlgorithm.zip?dl=0",
   "description": "This is a basic genetic algorithm programmed in C++ and rendered in SFML. This was made as a machine-learning and generational structure test. This algorithm simulates the pink dot's survival in this forest, determined by its ability to value different resources and the distance it takes to reach them. There are 3 resources on the map: food, wood, and water. Food and wood both function identically in that they replenish when there are few on the map, but the survivor needs more food than wood each day to survive. Water is needed the most, but there are only 3 nodes on the map at any given time, and they change locations each day. The survivor requires enough food, water, and wood to survive each day and can only spend a certain amount of energy moving between nodes before having to go home. The survivor can mutate its priority for each resource node separately and how much it values closer nodes. The best 2 survivors in each generation will create the next generation with various mutations. Leaving the simulation running, the best mutated survivors in the later generations can survive for thousands of days."
 
   }
