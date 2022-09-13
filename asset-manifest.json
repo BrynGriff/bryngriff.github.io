@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.18cede81.css",
+    "main.css": "/static/css/main.74bc4772.css",
     "main.js": "/static/js/main.f6982917.js",
     "static/js/787.aeca62f9.chunk.js": "/static/js/787.aeca62f9.chunk.js",
     "static/media/quantumhalt.gif": "/static/media/quantumhalt.09e442046f2063e3ef09.gif",
@@ -27,12 +27,12 @@
     "static/media/stickyball.png": "/static/media/stickyball.af20240c5520a22be546.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/index.html",
-    "main.18cede81.css.map": "/static/css/main.18cede81.css.map",
+    "main.74bc4772.css.map": "/static/css/main.74bc4772.css.map",
     "main.f6982917.js.map": "/static/js/main.f6982917.js.map",
     "787.aeca62f9.chunk.js.map": "/static/js/787.aeca62f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.18cede81.css",
+    "static/css/main.74bc4772.css",
     "static/js/main.f6982917.js"
   ]
 }
