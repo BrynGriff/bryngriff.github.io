@@ -31,11 +31,13 @@ function Home() {
   );
 }
 
+// Creates all projects
 function Projects()
 {
   const projectData = JSON.parse(projectJSON);
   const projects: JSX.Element[] = [];
   let buttonCount: number = 0;
+  
   let buttonDelay: number = 100;
 
   // Create button elements

@@ -10,7 +10,7 @@ export const projectJSON = `[
     "content": [
       {
         "header": "Overview",
-        "paragraph": "Persist is a third-person multiplayer roguelike dungeon crawler game made in Unity Engine. I was the lead programmer of this project; my main roles included the creation and upkeep of all backend combat and gameloop features (items, stats, buffs, UI) as well as the network programming. Our team was composed of 5 artists and 2 programmers. It was the largest project I have worked on, taking approximately 1 year to develop from the initial prototype to a free release on itch.io. Many of the underlying systems from the game had already been featured in previous projects (Forgotten Constructs, Mages of the Abyss) so a large amount of this development time was dedicated to refining existing systems as well as creating brand new ones."
+        "paragraph": "Persist is a third-person multiplayer roguelike dungeon crawler game made in Unity Engine. I was the lead programmer and co-designer of this project; my main roles included the creation and upkeep of all backend combat and gameloop features (items, stats, buffs, UI) as well as the network programming. Our team was composed of 5 artists and 2 programmers. It was the largest project I have worked on, taking approximately 1 year to develop from the initial prototype to a free release on itch.io. Many of the underlying systems from the game had already been featured in previous projects (Forgotten Constructs, Mages of the Abyss) so a large amount of this development time was dedicated to refining existing systems as well as creating brand new ones."
       },
       {
         "header": "Content",
@@ -66,7 +66,7 @@ export const projectJSON = `[
     "content": [
       {
         "header": "Overview",
-        "paragraph": "Forgotten Constructs is a sidescroller co-op action game made in Unity Engine. I was co-programmer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included the creation of the state-based combat system, movement, grappling, enemy spawning and progression mechanics. This project was moved up from being one of our prototypes to being one of our two 'mini-productions', created over 4 weeks following a 1 week prototype. This was my first 3D combat-focused prototype, so many game systems were created from scratch instead of being re-used from other projects."
+        "paragraph": "Forgotten Constructs is a sidescroller co-op action game made in Unity Engine. I was co-programmer and co-designer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included the creation of the state-based combat system, movement, grappling, enemy spawning and progression mechanics. This project was moved up from being one of our prototypes to being one of our two 'mini-productions', created over 4 weeks following a 1 week prototype. This was my first 3D combat-focused prototype, so many game systems were created from scratch instead of being re-used from other projects."
       },
       {
         "header": "Content",
@@ -92,7 +92,7 @@ export const projectJSON = `[
     "content": [
       {
         "header": "Overview",
-        "paragraph": "Toystalgia is an isometric puzzle game made in Unity Engine. I was co-programmer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included puzzle key mechanics, movement, gameloop and menu features. This project was moved up from being one of our prototypes to being one of our two 'mini-productions', created over 4 weeks following a 1 week prototype. The initial prototype was created from the prompt: 'All grown-ups were once children… but only few of them remember it."
+        "paragraph": "Toystalgia is an isometric puzzle game made in Unity Engine. I was co-programmer and co-designer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included puzzle key mechanics, movement, gameloop and menu features. This project was moved up from being one of our prototypes to being one of our two 'mini-productions', created over 4 weeks following a 1 week prototype. The initial prototype was created from the prompt: 'All grown-ups were once children… but only few of them remember it."
       },
       {
         "header": "Content",
@@ -118,7 +118,7 @@ export const projectJSON = `[
     "content": [
       {
         "header": "Overview",
-        "paragraph": "Cold Front is a third-person survival game made in Unity Engine. I was co-programmer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included overseeing temperature and stat systems, crafting mechanics, inventory systems and resource spawning. This project was one of three prototypes created during the 'Pre-production' phase at Media Design School. Persist was ultimately chosen to be taken into full production, but much was still learned from this prototype."
+        "paragraph": "Cold Front is a third-person survival game made in Unity Engine. I was co-programmer and co-designer of this project - our team consisted of 2 programmers and 5 artists. My main roles for this project included overseeing temperature and stat systems, crafting mechanics, inventory systems and resource spawning. This project was one of three prototypes created during the 'Pre-production' phase at Media Design School. Persist was ultimately chosen to be taken into full production, but much was still learned from this prototype."
       },
       {
         "header": "Content",
@@ -144,7 +144,7 @@ export const projectJSON = `[
     "content": [
       {
         "header": "Overview",
-        "paragraph": "Starbent is a 2D bullet hell game inspired by Space Invaders created in Game Maker Studio 2. I was the sole developer of this project, as such I created all the code and assets for the game, save for the sounds and 2 sprites. This was the first game project I worked on at Media Design School and was created in 2 months."
+        "paragraph": "Starbent is a 2D bullet hell game inspired by Space Invaders created in Game Maker Studio 2. I was the sole developer of this project, as such I created all the code, assets and design for the game, save for the sounds and 2 sprites. This was the first game project I worked on at Media Design School and was created in 2 months."
       },
       {
         "header": "Content",
