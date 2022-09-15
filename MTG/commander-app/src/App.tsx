@@ -22,8 +22,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MyButton />
-
+        <form action="http://localhost:5000/signup" method="POST">
+          <input type="text" name="fullname" placeholder="fullname"></input>
+          <input type="text" name="username" placeholder="username"></input>
+          <input type="text" name="password" placeholder="password"></input>
+          <MyButton />
+        </form>
       </header>
     </div>
   );
@@ -31,7 +35,7 @@ function App() {
 
 function MyButton() {
   return(
-    <button>
+    <button type="submit">
       <p>Begin</p>
     </button>
   );
