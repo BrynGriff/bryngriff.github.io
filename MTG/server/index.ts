@@ -125,9 +125,10 @@ async function get(url: string){
 let completed = 0;
 async function StartScraping()
 {
-    let commanders: Commander[] = await GetCommandersFromScryfall();
+    //let commanders: Commander[] = await GetCommandersFromScryfall();
     let map = new Map<string, number>();
 
+    let commanders: Commander[] = [];
     await PopulateCommandersToMap(commanders, map);
     FilterBannedTags(map);
 
@@ -174,28 +175,23 @@ async function PopulateCommandersToMap(commanders: Commander[], map: Map<string,
     }
 }
 
+// Use puppeteer
 async function PopulateCommanderToMap(index: number, map: Map<string, number>, commanders: Commander[], failedRequests: number[])
 {
-    let simplifiedName = SimplifyName(commanders[index].name)
-    let url:string = "https://tappedout.net/mtg-decks/search/?q=&general=" + simplifiedName + "&price_min=&price_max=&o=-rating&submit=Filter+results";
+    //let simplifiedName = SimplifyName(commanders[index].name)
+    let simplifiedName = "prosper-tome-bound";
+    let url:string = "https://edhrec.com/commanders/" + simplifiedName;
     console.log(index + ": " + simplifiedName);
     await (axios.get(url).then((response:AxiosResponse) => {
 
         const html_data = response.data;
         const $ = cheerio.load(html_data);
-        const parentElem = '#body > div:nth-child(4) > div > div.col-sm-8.col-lg-9.col-xs-12';
-        let childPath = "> div > div.contents.col-xs-12.col-sm-5 > div > div.col-xs-6.col-sm-12.hidden-xs > h5";
+        const parentElem = '#root';
 
-        $(parentElem).children().each((deckIndex, deckElem) =>{
-            let deckElemString = parentElem.slice() + ' > div:nth-child(' + (deckIndex + 1) + ')';
-            if (deckIndex >= 2)
-            {
-                let tagElem = deckElemString + childPath;
-                $(tagElem).children().each((childIndex, childElem) =>{
-                    let tag = $(childElem).text();
-                    PopulateMapWithTag(tag, map);
-                })
-            }
+        console.log(html_data);
+        $(parentElem).children().each((childIndx, childElem) =>{
+            let tag = $(childElem).text();
+            console.log(tag);
         })
 
         completed++;
