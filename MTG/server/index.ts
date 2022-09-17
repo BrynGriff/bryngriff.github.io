@@ -11,6 +11,11 @@ const commandersJSON = require('./commanders.json');
 
 let commanderParams: string = "type:creature+type:legendary+legal:commander+layout:normal";
 
+// Banned tags and colors
+let bannedTags:string[] = ["Combo", "Multiplayer", "Competitive", "Casual", "Primer", "Theme/Gimmick", "Midrange", "Budget"];
+let colorTags:string[] = ["BRG (Jund)", "RUG (Temur)", "BG (Golgari)", "BR (Rakdos)", "RG (Gruul)", "BUG (Sultai)", "WUB (Esper)", "UR (Izzet)", "RW (Boros)", "RUW (Jeskai, America)", "GWU (Bant)", "GU (Simic)", "BGW (Abzan, Junk)", "UB (Dimir)", "WU (Azorius)", "RBW (Mardu)", "GW (Selesnya)", "WB (Orzhov)", "RGW (Naya)", "UBR (Grixis)", "RGWU",
+"Mono-Red", "Mono-Green", "Mono-Blue", "Mono-White", "Mono-Black"];
+
 // We are using our packages here
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
@@ -121,23 +126,10 @@ let completed = 0;
 async function StartScraping()
 {
     let commanders: Commander[] = await GetCommandersFromScryfall();
-    let startIndex = 0;
     let map = new Map<string, number>();
 
-    let failedRequests: number[] = [];
-    for (let i = startIndex; i < 75; i++)
-    {
-        await PopulateCommanderToMap(i, map, commanders, failedRequests);
-    }
-    while (failedRequests.length > 0)
-    {
-        let secondFailedRequests: number[] = [];
-        for (let i = 0; i < failedRequests.length; i++)
-        {
-            await PopulateCommanderToMap(failedRequests[i], map, commanders, secondFailedRequests);
-        }
-        failedRequests = secondFailedRequests;
-    }
+    await PopulateCommandersToMap(commanders, map);
+    FilterBannedTags(map);
 
     let sortedMap = new Map([...map].sort((a, b) => 
     a[1] - b[1]
@@ -152,6 +144,36 @@ async function StartScraping()
     });
 }
 
+function FilterBannedTags(map: Map<string, number>)
+{
+    for (let x of map)
+    {
+        if (bannedTags.includes(x[0]) || colorTags.includes(x[0]))
+        {
+            map.delete(x[0]);
+        }
+    }
+}
+
+async function PopulateCommandersToMap(commanders: Commander[], map: Map<string, number>)
+{
+    let startIndex = 0;
+    let failedRequests: number[] = [];
+    for (let i = startIndex; i < 10; i++)
+    {
+        await PopulateCommanderToMap(i, map, commanders, failedRequests);
+    }
+    while (failedRequests.length > 0)
+    {
+        let secondFailedRequests: number[] = [];
+        for (let i = 0; i < failedRequests.length; i++)
+        {
+            await PopulateCommanderToMap(failedRequests[i], map, commanders, secondFailedRequests);
+        }
+        failedRequests = secondFailedRequests;
+    }
+}
+
 async function PopulateCommanderToMap(index: number, map: Map<string, number>, commanders: Commander[], failedRequests: number[])
 {
     let simplifiedName = SimplifyName(commanders[index].name)
@@ -164,10 +186,6 @@ async function PopulateCommanderToMap(index: number, map: Map<string, number>, c
         const parentElem = '#body > div:nth-child(4) > div > div.col-sm-8.col-lg-9.col-xs-12';
         let childPath = "> div > div.contents.col-xs-12.col-sm-5 > div > div.col-xs-6.col-sm-12.hidden-xs > h5";
 
-        let bannedTags:string[] = ["Combo", "Multiplayer", "Competitive", "Casual", "Primer", "Theme/Gimmick", "Midrange", "Budget"];
-        let colorTags:string[] = ["BRG (Jund)", "RUG (Temur)", "BG (Golgari)", "BR (Rakdos)", "RG (Gruul)", "BUG (Sultai)", "WUB (Esper)", "UR (Izzet)", "RW (Boros)", "RUW (Jeskai, America)", "GWU (Bant)", "GU (Simic)", "BGW (Abzan, Junk)", "UB (Dimir)", "WU (Azorius)", "RBW (Mardu)", "GW (Selesnya)", "WB (Orzhov)", "RGW (Naya)", "UBR (Grixis)", "RGWU",
-        "Mono-Red", "Mono-Green", "Mono-Blue", "Mono-White", "Mono-Black"];
-
         $(parentElem).children().each((deckIndex, deckElem) =>{
             let deckElemString = parentElem.slice() + ' > div:nth-child(' + (deckIndex + 1) + ')';
             if (deckIndex >= 2)
@@ -175,20 +193,7 @@ async function PopulateCommanderToMap(index: number, map: Map<string, number>, c
                 let tagElem = deckElemString + childPath;
                 $(tagElem).children().each((childIndex, childElem) =>{
                     let tag = $(childElem).text();
-                    if (bannedTags.includes(tag) || colorTags.includes(tag))
-                    {
-                        return;
-                    }
-
-                    let tagCount = map.get(tag);
-                    if (typeof(tagCount) != 'undefined')
-                    {
-                        map.set(tag, tagCount + 1);
-                    }
-                    else
-                    {
-                        map.set(tag, 1);
-                    }
+                    PopulateMapWithTag(tag, map);
                 })
             }
         })
@@ -213,4 +218,22 @@ async function PopulateCommanderToMap(index: number, map: Map<string, number>, c
           }
           console.log(error.config);
     }))
+}
+
+function PopulateMapWithTag(tag: string, map: Map<string, number>)
+{
+    if (bannedTags.includes(tag) || colorTags.includes(tag))
+    {
+        return;
+    }
+
+    let tagCount = map.get(tag);
+    if (typeof(tagCount) != 'undefined')
+    {
+        map.set(tag, tagCount + 1);
+    }
+    else
+    {
+        map.set(tag, 1);
+    }
 }
