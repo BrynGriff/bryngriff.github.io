@@ -74,7 +74,7 @@ export const projectJSON = `[
       },
       {
         "header": "Combat System",
-        "paragraph": "The games' combat system was created using the first iteration of the state machine system I created that would eventually be used in Persist. This allows certain actions to overlap, certain actions to queue, as well as making some actions sequential with specific transition timings, such as combo attack of the melee knight. This was expanded in future projects to add much more functionality such as advanced queuing, network state cloning and further integration with character systems."
+        "paragraph": "The game's combat system was made using the first iteration of the state machine system I created that would eventually be used in Persist. This allows certain actions to overlap, certain actions to queue, as well as making some actions sequential with specific transition timings, such as combo attack of the melee knight. This was expanded in future projects to add much more functionality such as advanced queuing, network state cloning and further integration with character systems."
       },
       {
         "header": "Cooperation",
@@ -122,11 +122,11 @@ export const projectJSON = `[
       },
       {
         "header": "Content",
-        "paragraph": "Cold Front is a survival game where the player must move north to escape the valley while battling the cold and hunger. The player can pick up resources to create fires to stay warm and berries to eat. The player starts with a sled with a large amount of inventory space that can be dragged along on the journey. The sled slows the players' movement speed but allows them to stockpile resources to make emergency situations more manageable. The sled can be ditched at any time. During the night ice wraiths will move towards the player and start freezing them. They can be dispelled by moving near a campfire or using a fire rune to throw sparks at them."
+        "paragraph": "Cold Front is a survival game where the player must move north to escape the valley while battling the cold and hunger. The player can pick up resources to create fires to stay warm and berries to eat. The player starts with a sled with a large amount of inventory space that can be dragged along on the journey. The sled slows the player's movement speed but allows them to stockpile resources to make emergency situations more manageable. The sled can be ditched at any time. During the night ice wraiths will move towards the player and start freezing them. They can be dispelled by moving near a campfire or using a fire rune to throw sparks at them."
       },
       {
         "header": "Temperature Mechanics",
-        "paragraph": "A large amount of the development time was spent creating the temperature system. The temperature reacts to the time of day as well as temperature sources nearby, such as campfires and ice wraiths. Temperature receivers (such as the player) have an amount of insulation that will prevent them from getting cold as quickly. In the players' case insulation is determined by the hunger level. The temperature system received a lot of work as this game was a candidate to be moved forward into full production. As Persist was chosen instead, the game is unfortunately left with a very complex temperature system without much gameplay to utilize it."
+        "paragraph": "A large amount of the development time was spent creating the temperature system. The temperature reacts to the time of day as well as temperature sources nearby, such as campfires and ice wraiths. Temperature receivers (such as the player) have an amount of insulation that will prevent them from getting cold as quickly. In the player's case insulation is determined by the hunger level. The temperature system received a lot of work as this game was a candidate to be moved forward into full production. As Persist was chosen instead, the game is unfortunately left with a very complex temperature system without much gameplay to utilize it."
       },
       {
         "header": "Future Plans",
@@ -148,7 +148,7 @@ export const projectJSON = `[
       },
       {
         "header": "Content",
-        "paragraph": "In Starbent you fight waves of flying enemies which move in a space-invaders-like pattern. The player ship is able to move in a 2D space in the lower portion of the screen to dodge the assailment of bullets and bombs from the enemies while firing back. The player ship can activate a shield to block bullets for a short time which charges the ships' ultimate laser, capable of wiping out several columns of invaders. Between each wave of invaders, a boss will appear and fight the player with unique attacks and gimmicks. During the invader waves the player can shoot a UFO flying at the top to gain a temporary powerup. The game is endless, progressively getting harder until the player is destroyed."
+        "paragraph": "In Starbent you fight waves of flying enemies which move in a space-invaders-like pattern. The player ship is able to move in a 2D space in the lower portion of the screen to dodge the assailment of bullets and bombs from the enemies while firing back. The player ship can activate a shield to block bullets for a short time which charges the ship's ultimate laser, capable of wiping out several columns of invaders. Between each wave of invaders, a boss will appear and fight the player with unique attacks and gimmicks. During the invader waves the player can shoot a UFO flying at the top to gain a temporary powerup. The game is endless, progressively getting harder until the player is destroyed."
       },
       {
         "header": "Idea Expansion",

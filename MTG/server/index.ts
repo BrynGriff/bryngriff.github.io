@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import cheerio, {Cheerio} from 'cheerio';
 import axios, {AxiosResponse} from 'axios';
+import { TimeoutError } from 'puppeteer';
 
 const app = express()
 const bodyParser = require('body-parser')
@@ -8,6 +9,9 @@ const cors = require('cors')
 const https = require('https');
 const port = 6000
 const commandersJSON = require('./commanders.json');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const EdhrecUrl = (commanderName: string) => `https://edhrec.com/commanders/${commanderName}`;
 
 let commanderParams: string = "type:creature+type:legendary+legal:commander+layout:normal";
 
@@ -73,6 +77,11 @@ type CommanderList = {
 	data: Commander;
 }
 
+type StoredCommanders = {
+    commanders: Commander[];
+    timeSaved: number;
+}
+
 async function GetCommandersFromScryfall() : Promise<Commander[]>
 {
     let commandersInColor: CommanderList;
@@ -125,10 +134,36 @@ async function get(url: string){
 let completed = 0;
 async function StartScraping()
 {
-    //let commanders: Commander[] = await GetCommandersFromScryfall();
+    let lastSave = 0;
+    let rawdata = fs.readFileSync('commanders.json');
+    let commanderData = JSON.parse(rawdata);
+    if (typeof(commanderData.timeSaved) != 'undefined')
+    {
+        lastSave = commanderData.timeSaved;
+    }
+
+    const currentDate = new Date();
+    const currentTime = currentDate.getTime();
+
+    let commanders: Commander[];
+    if (currentTime - lastSave > 100000000)
+    {
+        console.log("Saving the commanders");
+        commanders = await GetCommandersFromScryfall();
+        let storedCommanders: StoredCommanders = {} as StoredCommanders;
+        storedCommanders.commanders = commanders;
+        storedCommanders.timeSaved = currentTime;
+        fs.writeFileSync('commanders.json', JSON.stringify(storedCommanders));
+    }
+    else
+    {
+        commanders = commanderData.commanders;
+    }
+
+
     let map = new Map<string, number>();
 
-    let commanders: Commander[] = [];
+    //let commanders: Commander[] = [];
     await PopulateCommandersToMap(commanders, map);
     FilterBannedTags(map);
 
@@ -158,62 +193,112 @@ function FilterBannedTags(map: Map<string, number>)
 
 async function PopulateCommandersToMap(commanders: Commander[], map: Map<string, number>)
 {
+    const browser = await puppeteer.launch({headless: false});
+    const page = await browser.newPage();
+
+    await page.setRequestInterception(true);
+
+    page.on('request', (request: any) => {
+        if (['image'].indexOf(request.resourceType()) !== -1) {
+            request.abort();
+        } else {
+            request.continue();
+        }
+    });
+
     let startIndex = 0;
     let failedRequests: number[] = [];
-    for (let i = startIndex; i < 10; i++)
+    for (let i = startIndex; i < 300; i++)
     {
-        await PopulateCommanderToMap(i, map, commanders, failedRequests);
+        try{
+            await PopulateCommanderToMap(i, map, commanders, failedRequests, page);
+        }
+        catch (error)
+        {
+            failedRequests.push(i);
+            console.error(error);
+        }
     }
     while (failedRequests.length > 0)
     {
         let secondFailedRequests: number[] = [];
         for (let i = 0; i < failedRequests.length; i++)
         {
-            await PopulateCommanderToMap(failedRequests[i], map, commanders, secondFailedRequests);
+            await PopulateCommanderToMap(failedRequests[i], map, commanders, secondFailedRequests, page);
         }
         failedRequests = secondFailedRequests;
     }
 }
 
+function timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Use puppeteer
-async function PopulateCommanderToMap(index: number, map: Map<string, number>, commanders: Commander[], failedRequests: number[])
+async function PopulateCommanderToMap(index: number, map: Map<string, number>, commanders: Commander[], failedRequests: number[], page:any)
 {
-    //let simplifiedName = SimplifyName(commanders[index].name)
-    let simplifiedName = "prosper-tome-bound";
-    let url:string = "https://edhrec.com/commanders/" + simplifiedName;
-    console.log(index + ": " + simplifiedName);
-    await (axios.get(url).then((response:AxiosResponse) => {
+    let simplifiedName = SimplifyName(commanders[index].name)
+    //let simplifiedName = "prosper-tome-bound";
+    let url:string = "" + simplifiedName;
+    
+    console.log("Scraping " + commanders[index].name);
 
-        const html_data = response.data;
-        const $ = cheerio.load(html_data);
-        const parentElem = '#root';
+    page.goto(EdhrecUrl(simplifiedName));
 
-        console.log(html_data);
-        $(parentElem).children().each((childIndx, childElem) =>{
-            let tag = $(childElem).text();
-            console.log(tag);
-        })
+    await page.waitForFunction(`document.name != "EDHREC"`);
 
-        completed++;
-    }).catch(function (error) {
-        failedRequests.push(index);
-        if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-          console.log(error.config);
-    }))
+    await page.waitForTimeout(1000);
+    await Promise.race([
+        page.waitForSelector('select[class="form-control"]'),
+        page.waitForTimeout(2000)
+    ]);
+
+    let data = await page.evaluate(() => {
+        let themes: string[] = [];
+
+        let selection = document.querySelector('select[class="form-control"]');
+
+        if (!selection)
+        {
+            return{
+                themes
+            }
+        }
+        let children = selection!.childNodes;
+
+
+        children.forEach(function (value, i) {
+            if (i != 0)
+            {
+                let themeAmount = value.textContent;
+                let theme = themeAmount!.substring(0, themeAmount!.indexOf("(") - 1);
+                if (theme == '')
+                {
+                    return{
+                        themes
+                    }
+                }
+                themes.push(theme);
+            }
+        });
+
+        return{
+            themes
+        }
+    });
+
+    if (data.themes.length == 0)
+    {
+        return;
+    }
+
+    data.themes.forEach(function (value: string, i: number) {
+        PopulateMapWithTag(value, map);
+    });
+
+    console.log(data);
+    console.log("\n");
+
 }
 
 function PopulateMapWithTag(tag: string, map: Map<string, number>)
