@@ -3,7 +3,7 @@ export const projectJSON = `[
     "name": "persist",
     "fullName": "Persist",
     "displayName": "Persist",
-    "engine": "Unity Engine",
+    "engine": "Unity Engine (C#)",
     "year": 2022,
     "videoLink": "https://www.youtube.com/embed/C45PUbWLfM8",
     "downloadLink": "https://dreamfallstudio.itch.io/persist",
@@ -60,7 +60,7 @@ export const projectJSON = `[
     "name": "constructs",
     "fullName": "Forgotten Constructs",
     "displayName": "Constructs",
-    "engine": "Unity Engine",
+    "engine": "Unity Engine (C#)",
     "year": 2021,
     "downloadLink": "https://drive.google.com/file/d/1-bT6FMUEHGXGawK070WmJNtjXy-IeBMd/view?usp=sharing",
     "content": [
@@ -86,7 +86,7 @@ export const projectJSON = `[
     "name": "toystalgia",
     "fullName": "Toystalgia",
     "displayName": "Toystalgia",
-    "engine": "Unity Engine",
+    "engine": "Unity Engine (C#)",
     "year": 2021,
     "downloadLink": "https://drive.google.com/file/d/1Q-Wy8U1ZWFsW4lHt_-zj6XDNG9VhjdSc/view?usp=sharing",
     "content": [
@@ -112,7 +112,7 @@ export const projectJSON = `[
     "name": "coldfront",
     "fullName": "Cold Front",
     "displayName": "Cold Front",
-    "engine": "Unity Engine",
+    "engine": "Unity Engine (C#)",
     "year": 2021,
     "downloadLink": "https://drive.google.com/file/d/1rwTMUvPkLu8TKjjYj4xTkGbMiY923JWq/view?usp=sharing",
     "content": [
@@ -193,7 +193,7 @@ export const miniProjectData = `[
     {
     "name": "mages",
     "fullname": "Mages of the Abyss",
-    "engine": "Unity Engine",
+    "engine": "Unity Engine (C#)",
     "imageExtension": "gif",
     "downloadLink": "https://drive.google.com/file/d/1QLpYheXkHTGJJPVc51rQHjA3DUzKBIfS/view?usp=sharing",
     "description": "Mages of the Abyss is an online PVP arena shooter. Players can pick between two classes of mage: arcane and blood mage, and fight in a small arena. I was one of two programmers working on this game, alongside five artists. This was my first project working with the Unity networking plugin Mirror, and the experience gained from creating this prototype paved the way to making Persist a fully networked multiplayer game. The game is lacking in content (classes, maps) but was built to be expandable if we had decided to move it into full production."

@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cheerio, {Cheerio} from 'cheerio';
 import axios, {AxiosResponse} from 'axios';
 import { TimeoutError } from 'puppeteer';
+import { ObjectId, MongoClient, Db, Collection } from "mongodb";
 
 const app = express()
 const bodyParser = require('body-parser')
@@ -27,7 +28,81 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
  extended: true})); 
 app.use(cors());
 
-(async () => StartScraping())()
+let db: Db;
+
+
+(async() => main())();
+
+async function main()
+{
+    let url = "mongodb://localhost:27017/commanderapp";
+    const client = new MongoClient(url);
+    console.log("Awaiting mongo server");
+    await client.connect();
+    console.log("Connected");
+    db = client.db("commanderapp");
+
+    let commandersNeedRefresh = await CommandersNeedRefresh();
+    await UpdateTime();
+
+    if (commandersNeedRefresh)
+    {
+        await UpdateCommanders();
+        await StartScraping();
+    }
+
+}
+
+async function UpdateTime()
+{
+    const currentDate = new Date();
+    const currentTime = currentDate.getTime();
+    await ValidateTime();
+
+    db.collection("timesaved").updateOne({}, { $set: {"time": currentTime} })
+
+
+}
+
+async function ValidateTime()
+{
+    let timeCollection : Collection = db.collection("timesaved");
+    let count = await timeCollection.countDocuments();
+    
+    if (count == 0)
+    {
+        await timeCollection.insertOne({"time" : 0});
+    }
+}
+
+async function UpdateCommanders()
+{
+    let commanders: Commander[];
+    console.log("Saving the commanders");
+    commanders = await GetCommandersFromScryfall();
+    let storedCommanders: StoredCommanders = {} as StoredCommanders;
+    storedCommanders.commanders = commanders;
+    storedCommanders.timeSaved = 0;
+    fs.writeFileSync('commanders.json', JSON.stringify(storedCommanders));
+
+}
+
+async function CommandersNeedRefresh()
+{
+    await ValidateTime();
+    let commanders: Commander[];
+
+    let lastSave : number = 0;
+
+    const timeDocument = await db.collection("timesaved").findOne();
+    lastSave = timeDocument![0];
+
+    const currentDate = new Date();
+    const currentTime = currentDate.getTime();
+
+    return (currentTime - lastSave > 100000000);
+}
+
 
 
 //You can use this to check if your server is working
@@ -44,9 +119,9 @@ app.post('/login', (req: Request, res: Response) =>{
 
 //Route that handles signup logic
 app.post('/signup', (req: Request, res: Response) =>{
-console.log(req.body.fullname);
-console.log(req.body.username);
-console.log(req.body.password);
+    console.log(req.body.fullname);
+    console.log(req.body.username);
+    console.log(req.body.password);
 })
 
 //Start your server on a specified port
@@ -56,10 +131,14 @@ app.listen(port, ()=>{
 
 function SimplifyName(fullname: string)
 {
-    let name = fullname.replace(/[.,\/#!$%\^'&\*;:{}=\-_`~()]/g,"");
+    let name = fullname.replace(/[.,\/#!$%\^'&\*;:{}=\_`~()]/g,"");
     name = name.replace(/\s+/g, '-').toLowerCase();
     return name;
 
+}
+
+type CommanderThemes = {
+    themes: string[];
 }
 
 type Commander = {
@@ -134,34 +213,9 @@ async function get(url: string){
 let completed = 0;
 async function StartScraping()
 {
-    let lastSave = 0;
-    let rawdata = fs.readFileSync('commanders.json');
-    let commanderData = JSON.parse(rawdata);
-    if (typeof(commanderData.timeSaved) != 'undefined')
-    {
-        lastSave = commanderData.timeSaved;
-    }
-
-    const currentDate = new Date();
-    const currentTime = currentDate.getTime();
-
-    let commanders: Commander[];
-    if (currentTime - lastSave > 100000000)
-    {
-        console.log("Saving the commanders");
-        commanders = await GetCommandersFromScryfall();
-        let storedCommanders: StoredCommanders = {} as StoredCommanders;
-        storedCommanders.commanders = commanders;
-        storedCommanders.timeSaved = currentTime;
-        fs.writeFileSync('commanders.json', JSON.stringify(storedCommanders));
-    }
-    else
-    {
-        commanders = commanderData.commanders;
-    }
-
 
     let map = new Map<string, number>();
+    let commanders: Commander[] = [];
 
     //let commanders: Commander[] = [];
     await PopulateCommandersToMap(commanders, map);
@@ -247,9 +301,16 @@ async function PopulateCommanderToMap(index: number, map: Map<string, number>, c
 
     await page.waitForFunction(`document.name != "EDHREC"`);
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1500);
+
+    let title = await page.title();
+    if (title == "Error | EDHREC")
+    {
+        return;
+    }
+
     await Promise.race([
-        page.waitForSelector('select[class="form-control"]'),
+        page.waitForSelector('div[class="recharts-wrapper"]'),
         page.waitForTimeout(2000)
     ]);
 
