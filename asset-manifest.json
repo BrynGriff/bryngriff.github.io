@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b6512e54.css",
-    "main.js": "/static/js/main.f17aafd0.js",
+    "main.js": "/static/js/main.9fbf3a77.js",
     "static/js/787.aeca62f9.chunk.js": "/static/js/787.aeca62f9.chunk.js",
     "static/media/quantumhalt.gif": "/static/media/quantumhalt.09e442046f2063e3ef09.gif",
     "static/media/mages.gif": "/static/media/mages.ca6b52f62248b2d40a99.gif",
@@ -14,7 +14,7 @@
     "static/media/1.png": "/static/media/1.7f44935899fcd937d323.png",
     "static/media/2.png": "/static/media/2.d22270f190861e7ef565.png",
     "static/media/toystalgia.png": "/static/media/toystalgia.cb185e39ce0053caf226.png",
-    "static/media/portrait.png": "/static/media/portrait.11f7a8cf7626b6eef2e7.png",
+    "static/media/portrait.png": "/static/media/portrait.353365d4642d6f1b620b.png",
     "static/media/4.png": "/static/media/4.ad24f72cfbc0f4b65704.png",
     "static/media/miniprojects.png": "/static/media/miniprojects.3fdce3621b9e6f529e94.png",
     "static/media/persist.png": "/static/media/persist.6bc4f591fea4f8c7eec3.png",
@@ -28,11 +28,11 @@
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/index.html",
     "main.b6512e54.css.map": "/static/css/main.b6512e54.css.map",
-    "main.f17aafd0.js.map": "/static/js/main.f17aafd0.js.map",
+    "main.9fbf3a77.js.map": "/static/js/main.9fbf3a77.js.map",
     "787.aeca62f9.chunk.js.map": "/static/js/787.aeca62f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b6512e54.css",
-    "static/js/main.f17aafd0.js"
+    "static/js/main.9fbf3a77.js"
   ]
 }
