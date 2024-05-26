@@ -18,7 +18,7 @@ function Home() {
         <img src={require('../images/portrait.png')} alt="" data-slide-fade={CreateSlideFade(1000, 'down', 100, true, 500, true)}/>
         <div id="info-card-text">
           <h1>About Me</h1>
-          <p data-slide-fade={CreateSlideFade(1000, 'left', 100, true)}>I am a Software Engineer based in New Zealand and recently graduated with a Bachelor's Degree in Software Engineering from Media Design School. I've been making programs and games for 3 years and most recently released my biggest project, Persist, on itch.io. My showcase features game and web projects, but I enjoy working on any kind of cool software.</p>
+          <p data-slide-fade={CreateSlideFade(1000, 'left', 100, true)}>I am a Software Engineer based in New Zealand, currently working in the games industry. I've been developing games and software for 5 years, spanning various genres, and for the past 2 years, I've focused on virtual reality projects. My portfolio includes game and web projects, but I enjoy working on any kind of cool software.</p>
         </div>
       </div>
 

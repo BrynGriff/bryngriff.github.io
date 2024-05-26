@@ -1,5 +1,36 @@
 export const projectJSON = `[
   {
+    "name": "freshtracks",
+    "fullName": "Fresh Tracks",
+    "displayName": "Fresh Tracks",
+    "engine": "Unity Engine VR (C#)",
+    "year": 2023,
+    "videoLink": "https://www.youtube.com/embed/AGMb6zE3Trs",
+    "downloadLink": "",
+    "content": [
+      {
+        "header": "Overview",
+        "paragraph": "Fresh Tracks is a seamless, music-based action game on skis being developed by Buffalo Buffalo, featuring an evolving narrative and an original soundtrack. Fresh Tracks uses unique adaptive audio techniques to create a captivating, nonstop, music-driven adventure. The game is currently in development. I am currently working on this game as a Unity Gameplay Developer at Buffalo Buffalo."
+      },
+      {
+        "header": "Role",
+        "paragraph": "My role as Unity Gameplay Developer involves utilizing a wide range of skills to complete tasks across the entire experience. My main objectives include implementing gameplay elements, creating developer tools, and delivering builds. I also upkeep and refactor legacy code, as well as maintain code stability, and optimize the game. Gameplay implementation tackles a wide range of sectors, including UI, combat, controls, game flow, audio, and level generation."
+      },
+      {
+        "header": "Virtual Reality",
+        "paragraph": "This game serves as my first full project in VR, featuring primarily VR gameplay but also allowing a flat-screen mode for players without VR headsets to play. Much complexity has arisen from implementing a seamless experience, swapping between VR and flat-screen modes without stopping the game. This has given me a lot of insight into structuring both VR-focused and flat-screen games."
+      },
+      {
+        "header": "FMOD",
+        "paragraph": "This game has also provided me with experience integrating FMOD Studio with Unity Engine. Being a music-driven game, the sound reacts heavily to the players' actions and gameplay decisions. In my role as Gameplay Developer, I've implemented several features integrating FMOD with Unity, such as tracking and swapping tracks based on song replays and making in-game VFX react to the music."
+      },
+      {
+        "header": "Developer Tools",
+        "paragraph": "One of my largest contributions to this project has been implementing a full-scale, runtime-editor hybrid tool that allows developers to create game levels quickly, featuring a catalog of level sections, enemies, and obstacles, as well as options to change level properties and preview the level in real-time."
+      }
+    ]
+  },
+  {
     "name": "persist",
     "fullName": "Persist",
     "displayName": "Persist",
